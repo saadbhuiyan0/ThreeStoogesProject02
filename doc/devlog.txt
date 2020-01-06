@@ -4,3 +4,6 @@ Format GitHub repo, update with doc folder, devlog, README.
 
 saadB -- 2020-01-05 22:36
 Add PDFs of the APIs we are planning on utilizing.
+
+saadB -- 2020-01-05 23:25
+Add PDF of first draft of the design document.

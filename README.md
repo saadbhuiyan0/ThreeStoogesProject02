@@ -1,9 +1,9 @@
 # Wack Travel Plans by Three Stooges
 
-### Roster:
-Saad Bhuiyan: Project Manager, Database
-Hannah Fried: Backend
-Benjamin Avrahami: Frontend
+## Roster
+* Saad Bhuiyan -- Project Manager, Database
+* Benjamin Avrahami -- Frontend
+* Hannah Fried -- Backend
 
 ## What is Wack Travel Plans?
 Description

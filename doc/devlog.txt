@@ -7,3 +7,10 @@ Add PDFs of the APIs we are planning on utilizing.
 
 saadB -- 2020-01-05 23:25
 Add PDF of first draft of the design document.
+
+saadB -- 2020-01-07 09:14
+Made a very basic app.py that just imports Flask and initializes the database.
+
+saadB -- 2020-01-07 09:25
+Created a utl folder with _init_.py and db.py.
+db.py creates the database file, it is recycled from Matthew Chan's work on our last project together.

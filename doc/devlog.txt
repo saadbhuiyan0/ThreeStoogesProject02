@@ -20,3 +20,6 @@ Added create_user and authenticate_user to db.py.
 
 saadB -- 2020-01-07 19:23
 Added update_devlog.py script from last project.
+
+saadB -- 2020-01-07 20:25
+Created requirements.txt with expected contents.

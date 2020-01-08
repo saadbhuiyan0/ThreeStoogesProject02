@@ -1,4 +1,9 @@
-saadB -- 2020-01-05 21:00 
+friedH -- 2020-01-05 18:00
+reorganized design doc.
+Added component descriptions, rudimentary database layouts.
+
+
+saadB -- 2020-01-05 21:00
 Create component map.
 Format GitHub repo, update with doc folder, devlog, README.
 
@@ -22,3 +27,6 @@ saadB -- 2020-01-07 20:55
 Updates to database users table design: IP tracking preference will always default to N (no) and removed favorites column.
 Created new database table favorites which will take entries with username and the nation that is the favorite.
 Updated the component map to reflect how these changes will affect interactions between Flask and the database
+
+friedH -- 2020-01-07 23:30
+updated login and register routes.

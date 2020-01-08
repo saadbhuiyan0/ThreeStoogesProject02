@@ -17,3 +17,6 @@ db.py creates the database file, it is recycled from Matthew Chan's work on our 
 
 saadB -- 2020-01-07 19:04
 Added create_user and authenticate_user to db.py.
+
+saadB -- 2020-01-07 19:23
+Added update_devlog.py script from last project.

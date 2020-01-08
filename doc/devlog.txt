@@ -2,24 +2,23 @@ saadB -- 2020-01-05 21:00
 Create component map.
 Format GitHub repo, update with doc folder, devlog, README.
 
-saadB -- 2020-01-05 22:36
-Add PDFs of the APIs we are planning on utilizing.
-
 saadB -- 2020-01-05 23:25
+Add PDFs of the APIs we are planning on utilizing.
 Add PDF of first draft of the design document.
 
-saadB -- 2020-01-07 09:14
-Made a very basic app.py that just imports Flask and initializes the database.
-
 saadB -- 2020-01-07 09:25
+Made a very basic app.py that just imports Flask and initializes the database.
 Created a utl folder with _init_.py and db.py.
 db.py creates the database file, it is recycled from Matthew Chan's work on our last project together.
 
 saadB -- 2020-01-07 19:04
-Added create_user and authenticate_user to db.py.
-
-saadB -- 2020-01-07 19:23
-Added update_devlog.py script from last project.
+Added create_user and authenticate_user to db.py
 
 saadB -- 2020-01-07 20:25
+Added update_devlog.py script from last project.
 Created requirements.txt with expected contents.
+
+saadB -- 2020-01-07 20:55
+Updates to database users table design: IP tracking preference will always default to N (no) and removed favorites column.
+Created new database table favorites which will take entries with username and the nation that is the favorite.
+Updated the component map to reflect how these changes will affect interactions between Flask and the database

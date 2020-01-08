@@ -14,3 +14,6 @@ Made a very basic app.py that just imports Flask and initializes the database.
 saadB -- 2020-01-07 09:25
 Created a utl folder with _init_.py and db.py.
 db.py creates the database file, it is recycled from Matthew Chan's work on our last project together.
+
+saadB -- 2020-01-07 19:04
+Added create_user and authenticate_user to db.py.

@@ -41,3 +41,31 @@ def init(db=None):
                 );
                ''')
     db.commit()
+
+
+# function to register a user if the username doesn't exist in the database
+@_connects
+def create_user(username, password, db=None):
+    db.execute('''
+                INSERT INTO users(username, password) 
+                 VALUES(?, ?);
+               ''',
+               (username, password))
+    db.commit()
+    return True
+
+
+# function to authenticate whether a user exists and the password is correct
+@_connects
+def authenticate_user(username, password, db=None):
+    try:
+        userData = db.execute('''
+                               SELECT password 
+                               FROM users 
+                               WHERE username=?;
+                              ''', 
+                              (username,))
+        return password == [i for i in userData][0][0]
+    except IndexError as error:
+        print(error)
+        return False

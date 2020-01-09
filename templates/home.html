@@ -1,5 +1,14 @@
 {% extends "base.html" %}
-
+{% block script %}
+  <script src={{url_for('static', filename='home.js')}}>
+{% endblock %}
 {% block body %}
+  Favorites:
+  <ul class="list-group" id="favorites">
+    {% for i in favorites %}
+      <li class="list-group-item">i
+      <span class="badge badge-secondary">Remove</span></li>
+    {% endfor %}
+  </ul>
   <a href="/logout">Logout</a>
 {% endblock %}

@@ -87,7 +87,7 @@ def register():
         if request.args["password1"] != request.args["password2"]:
             flash("Passwords don't match.")
         # else if adding the user (to the database) is successful, username must be unique
-        elif db.add_user(request.args["username"], request.args["password"]):
+        elif db.add_user(request.args["username"], request.args["password1"]):
             # if the username is unique, session is added and user is redirected to home
             session["username"] = request.args["username"]
             return redirect(url_for("home"))

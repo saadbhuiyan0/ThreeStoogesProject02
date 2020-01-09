@@ -29,7 +29,7 @@ def add_user(username, password):
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     status = True                  
-    c.execute("SELECT * FROM users WHERE username = ?;" , (username)) # query rows where the username and input username match
+    c.execute("SELECT * FROM users WHERE username = ?;" , (username,)) # query rows where the username and input username match
     if c.fetchone() is None: # if the username does not already exist in the database
         c.execute("INSERT INTO users(username, password) VALUES(?, ?);" , (username, password)) # stores the input login credentials in the users table
     else:

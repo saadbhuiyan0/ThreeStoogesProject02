@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+  Create Account
+{% endblock %}
+{% block navbar %}
+{% endblock %}
+{% block body %}
+<div class="centered">
+  <h1>Create Account</h1>
+  <br>
+  <form method="GET" class="centered">
+    <label>Enter Username</label>
+    <input type="text" name="username">
+    <br>
+    <label>Enter Password</label>
+    <input type="password" name="password1">
+    <br>
+    <label> Enter Password Again: </label>
+    <input type="password" name="password2">
+    <br>
+    <br>
+    <input class="btn btn-secondary btn-sm" type="submit" value="Submit">
+  </form>
+  <br>
+  <form action = "/login">
+    <input class="btn btn-secondary btn-sm" type = "submit" value = "Return to Login">
+  </form>
+
+</div>
+{% endblock %}

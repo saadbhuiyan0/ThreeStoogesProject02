@@ -32,7 +32,11 @@ updated login and register routes.
 
 saadB -- 2020-01-08 20:58
 Fix devlog issues.
+Fix issue with app.py not running.
 Complete rework of db.py.
 Changed old functions to make them easier to understand.
 Added comments to the functions.
 Created new function to return a user's iptracking setting.
+
+saadB -- 2020-01-08 21:16
+Create a function to change the iptracking setting for a user.

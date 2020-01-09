@@ -52,8 +52,8 @@ def authenticate_user(username, password):
     return status
 
 
-# function to retrieve a user's IP setting
-def user_iptracking(username, db=None):
+# function to retrieve a user's iptracking setting
+def check_iptracking(username):
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     setting = False
@@ -61,6 +61,15 @@ def user_iptracking(username, db=None):
     for row in c.fetchall(): # rows that are queried
         if (row[0] == "True"): # if iptracking is true
             setting = True # setting is changed to true
+    db.commit() # save changes
+    db.close() # close database
+    return setting
+
+# function to set a user's iptracking setting
+def set_iptracking(username, setting):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("UPDATE users SET iptracking = ? WHERE username = ?;" , (setting, username)) # update ip tracking setting for a user
     db.commit() # save changes
     db.close() # close database
     return setting

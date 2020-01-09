@@ -47,3 +47,4 @@ Create a function to change the iptracking setting for a user.
 
 benjaminA -- 2020-01-08 21:40
 Made login connect to a basic home page
+Fixed bug where any attempts to register redirected regardless of success

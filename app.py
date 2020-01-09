@@ -84,7 +84,7 @@ def register():
         if request.args["username"] == "" or request.args["password1"] == "" or request.args["password2"] == "":
             flash("Please do not leave any fields blank.")
         # if the passwords don't match, flash error
-        if request.args["password1"] != request.args["password2"]:
+        elif request.args["password1"] != request.args["password2"]:
             flash("Passwords don't match.")
         # else if adding the user (to the database) is successful, username must be unique
         elif db.add_user(request.args["username"], request.args["password1"]):

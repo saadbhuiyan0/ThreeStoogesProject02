@@ -13,6 +13,7 @@ from flask import url_for
 from flask import session
 from flask import flash
 from urllib.request import urlopen
+from utl import db
 import json
 
 # create instance of class Flask
@@ -25,6 +26,7 @@ app.secret_key = "Stooges"            # for debugging
 
 # initialize database
 db.init()
+
 
 #=====DECORATOR=FUNCTIONS===================================================
 # Decorator functions to eliminate redundancy:
@@ -85,7 +87,7 @@ def register():
         if request.args["password1"] != request.args["password2"]:
             flash("Passwords don't match.")
         # else if adding the user (to the database) is successful, username must be unique
-        elif create_user(request.args["username"], request.args["password"]):
+        elif db.add_user(request.args["username"], request.args["password"]):
             # if the username is unique, session is added and user is redirected to home
             session["username"] = request.args["username"]
             return redirect(url_for("home"))

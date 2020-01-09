@@ -1,7 +1,6 @@
-friedH -- 2020-01-05 18:00
+hannaHF -- 2020-01-05 18:00
 reorganized design doc.
 Added component descriptions, rudimentary database layouts.
-
 
 saadB -- 2020-01-05 21:00
 Create component map.
@@ -28,5 +27,12 @@ Updates to database users table design: IP tracking preference will always defau
 Created new database table favorites which will take entries with username and the nation that is the favorite.
 Updated the component map to reflect how these changes will affect interactions between Flask and the database
 
-friedH -- 2020-01-07 23:30
+hannahF -- 2020-01-07 23:30
 updated login and register routes.
+
+saadB -- 2020-01-08 20:58
+Fix devlog issues.
+Complete rework of db.py.
+Changed old functions to make them easier to understand.
+Added comments to the functions.
+Created new function to return a user's iptracking setting.

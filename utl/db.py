@@ -19,7 +19,7 @@ def init():
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     # creating the users table
-    c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, iptracking TEXT DEFAULT 'False');")
+    c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, iptracking TEXT DEFAULT 'False', favorites TEXT);")
     db.commit() # save changes
     db.close() # close database
 
@@ -57,13 +57,14 @@ def check_iptracking(username):
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     setting = False
-    c.execute("SELECT iptracking FROM users WHERE username = ?;" , (username)) # query rows where the input name and password match
+    c.execute("SELECT iptracking FROM users WHERE username = ?;" , (username,)) # query iptracking setting where the input name match
     for row in c.fetchall(): # rows that are queried
         if (row[0] == "True"): # if iptracking is true
             setting = True # setting is changed to true
     db.commit() # save changes
     db.close() # close database
     return setting
+
 
 # function to set a user's iptracking setting
 def set_iptracking(username, setting):
@@ -73,3 +74,48 @@ def set_iptracking(username, setting):
     db.commit() # save changes
     db.close() # close database
     return setting
+
+
+# function to get a user's favorites
+def get_favorites(username):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT favorites FROM users WHERE username = ?;" , (username,)) # query favorites where username matches
+    for row in c.fetchall(): # rows that are queried
+        favorites = row[0] # set favorites to queried row
+    db.commit() # save changes
+    db.close() # close database
+    return favorites
+
+
+# function to add a favorite nation to a user's favorites
+def add_favorite(username, nation):
+    favorites = get_favorites(username) # get favorites using helper function
+    if favorites == None: # if there are no favorites
+        favorites = nation + "," # favorites is just the nation with a comma
+    else: # if there is a list of favorites
+        if nation in favorites: # if the nation is in that list
+            return False
+        favorites = favorites + nation + "," # otherwise, add the nation to that list
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("UPDATE users SET favorites = ? WHERE username = ?;" , (favorites, username)) # update favorites with new list
+    db.commit() # save changes
+    db.close() # close database
+    return True
+
+
+# function to remove a nation from a user's favorites
+def remove_favorite(username, nation):
+    favorites = get_favorites(username) # get favorites using helper function
+    if favorites == None: # if there are no favorites
+        return False
+    if nation not in favorites: # if the nation is in the list of favorites
+        return False
+    favorites = favorites.replace(nation + ",", "")
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("UPDATE users SET favorites = ? WHERE username = ?;" , (favorites, username)) # update favorites with new list
+    db.commit() # save changes
+    db.close() # close database
+    return True

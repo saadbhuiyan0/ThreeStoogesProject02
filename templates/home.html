@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block script %}
-  <script src={{url_for('static', filename='home.js')}}>
+  <script src={{url_for('static', filename='home.js')}}></script>
 {% endblock %}
 {% block body %}
   Favorites:
@@ -10,5 +10,8 @@
       <span class="badge badge-secondary">Remove</span></li>
     {% endfor %}
   </ul>
+  <br>
+  <a href="/settings">Settings</a>
+  <br>
   <a href="/logout">Logout</a>
 {% endblock %}

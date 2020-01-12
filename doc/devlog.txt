@@ -55,5 +55,16 @@ Removed favorites table and instead storing favorite nations as a string of nati
 Created functions to make this work including a function to get the favorite nations, add a favorite nation, and remove a favorited nation.
 Created tests in app.py to thoroughly check the functions work as intended and hold up to all expected undesired cases.
 
+benjaminA -- 2020-01-10 21:00
+Tried to put in javascript to allow users to add favorites from a list of countries (not quite working yet)
+
+benjaminA -- 2020-01-11 13:45
+Javascript now adds to favorites when removing from list of countries, but not reverse
+Updated navbar to include settings page and logout button
+
 saadB -- 2020-01-12 03:56
 Added a function that will allow user's to update their password.
+
+benjaminA -- 2020-01-12 11:55
+Implemented change password in settings page
+Updated javascript to allow removal from either set

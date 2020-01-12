@@ -52,6 +52,18 @@ def authenticate_user(username, password):
     return status
 
 
+# function to update a user's password
+def update_password(username, oldpassword, newpassword):
+    if not authenticate_user(username, oldpassword): # if the user's old password is incorrect
+        return False # password will not be updated
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("UPDATE users SET password = ? WHERE username = ?;" , (newpassword, username)) # update password for a user
+    db.commit() # save changes
+    db.close() # close database
+    return True
+    
+
 # function to retrieve a user's iptracking setting
 def check_iptracking(username):
     db = sqlite3.connect(DB_FILE) # open file

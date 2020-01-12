@@ -49,9 +49,11 @@ benjaminA -- 2020-01-08 21:40
 Made login connect to a basic home page
 Fixed bug where any attempts to register redirected regardless of success
 
-
 saadB -- 2020-01-10 09:41
 Updated database desing in design doc:
 Removed favorites table and instead storing favorite nations as a string of nations separated by commas in TEXT in the users table.
 Created functions to make this work including a function to get the favorite nations, add a favorite nation, and remove a favorited nation.
 Created tests in app.py to thoroughly check the functions work as intended and hold up to all expected undesired cases.
+
+saadB -- 2020-01-12 03:56
+Added a function that will allow user's to update their password.

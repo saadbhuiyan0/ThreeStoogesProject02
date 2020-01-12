@@ -3,13 +3,18 @@ var addFav = function(e) {
   var n = document.getElementById("favorites");
   var fav = document.createElement("li");
   fav.innerHTML = e;
-  fav.addEventListener('click', removeItem);
+  fav.addEventListener('click', removeFav);
   n.append(fav);
 }
 
 var removeItem = function(e) {
   //console.log(this);
   addFav(this.innerHTML);
+  this.remove();
+}
+
+var removeFav = function(e) {
+  addItem(this.innerHTML);
   this.remove();
 }
 
@@ -22,10 +27,8 @@ for (var i = 0; i < lis.length; i++) {
 var addItem = function(e) {
   var list = document.getElementById("thelist");
   var item = document.createElement("li");
-  item.innerHTML = "WORD";
+  //console.log(list);
+  item.innerHTML = e;
   item.addEventListener('click', removeItem);
   list.append(item);
 }
-
-var button = document.getElementById("b");
-button.addEventListener('click', addItem);

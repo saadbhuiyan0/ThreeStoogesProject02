@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+{% block body %}
+  <form action="/settings">
+    <label>Old Password</label>
+    <input type="password" name="oldpassword">
+    <br>
+    <label>New Password</label>
+    <input type="password" name="newpassword1">
+    <br>
+    <label>Retype New Password</label>
+    <input type="password" name="newpassword2">
+    <br>
+    <input class="btn btn-secondary btn-sm" type = "submit" value = "Change Password">
+  </form>
+{% endblock %}

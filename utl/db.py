@@ -20,6 +20,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, iptracking TEXT DEFAULT 'False', favorites TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, description TEXT, population INTEGER, safety_rating TEXT);")
     db.commit() # save changes
     db.close() # close database
 
@@ -131,3 +132,39 @@ def remove_favorite(username, nation):
     db.commit() # save changes
     db.close() # close database
     return True
+
+
+# function to return the description of a nation
+def description(nation):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT description FROM nations WHERE nation = ?;" , (nation,)) # query description where nation matches
+    for row in c.fetchall(): # rows that are queried
+        description = row[0] # set description to queried row
+    db.commit() # save changes
+    db.close() # close database
+    return description
+
+
+# function to return the population of a nation
+def population(nation):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT population FROM nations WHERE nation = ?;" , (nation,)) # query population where nation matches
+    for row in c.fetchall(): # rows that are queried
+        population = row[0] # set population to queried row
+    db.commit() # save changes
+    db.close() # close database
+    return population
+
+
+# function to return the safety rating of a nation
+def safety_rating(nation):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT safety_rating FROM nations WHERE nation = ?;" , (nation,)) # query safety rating where nation matches
+    for row in c.fetchall(): # rows that are queried
+        safety_rating = row[0] # set safety_rating to queried row
+    db.commit() # save changes
+    db.close() # close database
+    return safety_rating

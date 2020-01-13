@@ -68,3 +68,7 @@ Added a function that will allow user's to update their password.
 benjaminA -- 2020-01-12 11:55
 Implemented change password in settings page
 Updated javascript to allow removal from either set
+
+saadB -- 2020-01-13 12:14 
+Update design doc to reflect database table of nations.
+Create functions to return description, safety rating, and population of a given nation.

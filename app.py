@@ -119,10 +119,23 @@ def home():
     return render_template("home.html",
                             favorites = faves)
 
-@app.route("/settings")
+@app.route("/settings", methods=['GET','POST'])
 @protected
 def settings():
     username = session["username"]
+    if len(request.args) >= 3:
+        # if any one of the three fields are blank, flash error
+        if request.args["oldpassword"] == "" or request.args["newpassword1"] == "" or request.args["newpassword2"] == "":
+            flash("Please do not leave any fields blank.")
+        # if the new passwords don't match, flash error
+        elif request.args["newpassword1"] != request.args["newpassword2"]:
+            flash("Passwords don't match.")
+        # else update password
+        elif db.update_password(username, request.args["oldpassword"], request.args["newpassword1"]):
+            flash("Password updated.")
+        # else if false is returned by db
+        else:
+            flash("Password incorrect.")
     current_setting = db.check_iptracking(username)
     chosen_setting = request.form.getlist("setting")
     if chosen_setting != []:

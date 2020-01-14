@@ -83,3 +83,8 @@ saadB -- 2020-01-14 09:16
 Debug to make home work.
 Make update password work.
 Remove iptracking feature.
+
+saadB -- 2020-01-14 15:00
+Create a csv file with nations, alpha-2 code, description, and rating.
+Read data from csv file and store in the database.
+Add try-except in app.py to prevent errors when app has already been run at least once.

@@ -9,7 +9,7 @@
 
 # importing the sqlite3 module to interface with sqlite databases
 import sqlite3
-
+import csv       #facilitate CSV I/O
 
 DB_FILE = 'stooges.db'
 
@@ -21,7 +21,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, description TEXT, population INTEGER, safety_rating TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, description TEXT, rating TEXT, POPULATION INTEGER);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -32,10 +32,26 @@ def init():
 def populate_database():
     print("populating database...")
     print("create admin: " + str(add_user("admin", "password")))
-    print("set admin's iptracking to True: " + str(set_iptracking("admin", "True")))
+    print("cache data from REST Countries API...")
+    fill_nations()
+    print("data cached")
     print("add favorite nation United States of America to admin: " + str(add_favorite("admin", "United States of America")))
     print("add favorite nation North Korea to admin: " + str(add_favorite("admin", "North Korea")))
     print("database populated")
+
+
+# fill nations table with data
+def fill_nations():
+    with open("nations.csv") as file: # nnations.csv opened
+        file = csv.DictReader(file) #read through file using DictReader
+        for row in file: # goes through each row of the file
+            print("reading " + row["nation"] + " from csv")
+            db = sqlite3.connect(DB_FILE) # open file
+            c = db.cursor() # facilitate db ops
+            command = "INSERT INTO nations(nation,code,description,safety_rating) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["description"] + "\',\'" + row["rating"] + "\');" # we can loop like this because the first row become fieldnames
+            c.execute(command)
+            db.commit() # save changes
+            db.close() # close database
 
 
 # function to register a user if the username doesn't exist in the database

@@ -78,3 +78,6 @@ Populate database upon init when app is run. Plan on adding more.
 
 hannahF -- 2020-01-14 08:36
 Morning catch-up work getting most of the routes done. Really should have done this earlier. Need to focus on the /<nation> route now
+
+saadB -- 2020-01-14 08:54
+Debug to make home work.

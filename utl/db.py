@@ -174,7 +174,7 @@ def population(nation):
 def returnNations():
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
-    all_names = c.execute("SELECT name FROM nations;") # query population where nation matches
+    all_names = c.execute("SELECT name FROM nations;") # query all nation names
     db.commit() # save changes
     db.close() # close database
     return all_names

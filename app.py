@@ -114,19 +114,17 @@ def logout():
 @app.route("/home")
 @protected
 def home():
-    user_id = users.identify(session["username"])
-    faves = get_favorites(user_id)
-    return render_template("home.html"
-                            favorites = faves)
+    return render_template("home.html",
+                            favorites = db.get_favorites(session["username"]))
 
 @app.route("/settings", methods=['POST'])
 @protected
 def settings():
-    user_id = users.identify(session["username"])
-    current_setting = check_iptracking(user_id)
+    username = session["username"]
+    current_setting = check_iptracking(username)
     chosen_setting = request.form.getlist("setting")
     if setting[0] != currentSetting:
-        set_iptracking(user_id,chosen_setting)
+        set_iptracking(username,chosen_setting)
     return render_template("settings.html",
                             chosenSetting = chosen_setting)
 

@@ -72,3 +72,6 @@ Updated javascript to allow removal from either set
 saadB -- 2020-01-13 12:14 
 Update design doc to reflect database table of nations.
 Create functions to return description, safety rating, and population of a given nation.
+
+saadB -- 2020-01-13 21:03
+Populate database upon init when app is run. Plan on adding more.

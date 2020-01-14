@@ -16,6 +16,7 @@ DB_FILE = 'stooges.db'
 
 # initializes the database tables if they don't exist
 def init():
+    print("initializing database...")
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     # creating the users table
@@ -23,6 +24,18 @@ def init():
     c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, description TEXT, population INTEGER, safety_rating TEXT);")
     db.commit() # save changes
     db.close() # close database
+    print("database initialized")
+    populate_database()
+
+
+# populate database with information necessary for demo as well as nation data
+def populate_database():
+    print("populating database...")
+    print("create admin: " + str(add_user("admin", "password")))
+    print("set admin's iptracking to True: " + str(set_iptracking("admin", "True")))
+    print("add favorite nation United States of America to admin: " + str(add_favorite("admin", "United States of America")))
+    print("add favorite nation North Korea to admin: " + str(add_favorite("admin", "North Korea")))
+    print("database populated")
 
 
 # function to register a user if the username doesn't exist in the database

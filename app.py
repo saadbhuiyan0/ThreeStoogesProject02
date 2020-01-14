@@ -28,20 +28,6 @@ app.secret_key = "Stooges"            # for debugging
 db.init()
 
 
-# shortcut db functions for quicker debugging
-print("Create admin: " + str(db.add_user("admin", "password")))
-print("Set admin's iptracking to True: " + str(db.set_iptracking("admin", "True")))
-print("Check admin's iptracking setting: " + str(db.check_iptracking("admin")))
-print("Remove favorite with no favorites: " + str(db.remove_favorite("admin", "The Land of Big Macs America")))
-print("Add favorite to no favorites: " + str(db.add_favorite("admin", "The Glorious Kingdom of North Korea")))
-print("Add favorite: " + str(db.add_favorite("admin", "The Treacherous Village of South Korea")))
-print("Add favorite: " + str(db.add_favorite("admin", "The Land of Big Macs America")))
-print("Get favorites after adding: " + str(db.get_favorites("admin")))
-print("Remove favorite: " + str(db.remove_favorite("admin", "The Treacherous Village of South Korea")))
-print("Remove favorite: " + str(db.remove_favorite("admin", "The Land of Big Macs America")))
-print("Get favorites after removing: " + str(db.get_favorites("admin")))
-
-
 #=====DECORATOR=FUNCTIONS===================================================
 # Decorator functions to eliminate redundancy:
 

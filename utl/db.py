@@ -20,7 +20,7 @@ def init():
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
     # creating the users table
-    c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, iptracking TEXT DEFAULT 'False', favorites TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
     c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, description TEXT, population INTEGER, safety_rating TEXT);")
     db.commit() # save changes
     db.close() # close database
@@ -78,28 +78,28 @@ def update_password(username, oldpassword, newpassword):
     return True
 
 
-# function to retrieve a user's iptracking setting
-def check_iptracking(username):
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    setting = False
-    c.execute("SELECT iptracking FROM users WHERE username = ?;" , (username,)) # query iptracking setting where the input name match
-    for row in c.fetchall(): # rows that are queried
-        if (row[0] == "True"): # if iptracking is true
-            setting = True # setting is changed to true
-    db.commit() # save changes
-    db.close() # close database
-    return setting
+# # function to retrieve a user's iptracking setting
+# def check_iptracking(username):
+#     db = sqlite3.connect(DB_FILE) # open file
+#     c = db.cursor() # facilitate db ops
+#     setting = False
+#     c.execute("SELECT iptracking FROM users WHERE username = ?;" , (username,)) # query iptracking setting where the input name match
+#     for row in c.fetchall(): # rows that are queried
+#         if (row[0] == "True"): # if iptracking is true
+#             setting = True # setting is changed to true
+#     db.commit() # save changes
+#     db.close() # close database
+#     return setting
 
 
-# function to set a user's iptracking setting
-def set_iptracking(username, setting):
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    c.execute("UPDATE users SET iptracking = ? WHERE username = ?;" , (setting, username)) # update ip tracking setting for a user
-    db.commit() # save changes
-    db.close() # close database
-    return setting
+# # function to set a user's iptracking setting
+# def set_iptracking(username, setting):
+#     db = sqlite3.connect(DB_FILE) # open file
+#     c = db.cursor() # facilitate db ops
+#     c.execute("UPDATE users SET iptracking = ? WHERE username = ?;" , (setting, username)) # update ip tracking setting for a user
+#     db.commit() # save changes
+#     db.close() # close database
+#     return setting
 
 
 # function to get a user's favorites

@@ -114,17 +114,20 @@ def logout():
 @app.route("/home")
 @protected
 def home():
+    faves = db.get_favorites(session["username"]).split(",")
+    faves.pop(len(faves)-1)
     return render_template("home.html",
-                            favorites = db.get_favorites(session["username"]))
+                            favorites = faves)
 
-@app.route("/settings", methods=['POST'])
+@app.route("/settings")
 @protected
 def settings():
     username = session["username"]
-    current_setting = check_iptracking(username)
+    current_setting = db.check_iptracking(username)
     chosen_setting = request.form.getlist("setting")
-    if setting[0] != currentSetting:
-        set_iptracking(username,chosen_setting)
+    if chosen_setting != []:
+        if chosen_setting[0] != currentSetting:
+            db.set_iptracking(username,chosen_setting)
     return render_template("settings.html",
                             chosenSetting = chosen_setting)
 
@@ -148,7 +151,7 @@ def browse():
 @app.route("/nation")
 @protected
 def nation(country):
-    
+
     return render_template(country+".html")
     #INCOMPLETE
 

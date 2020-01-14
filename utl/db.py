@@ -1,5 +1,5 @@
 # Three Stooges -- Saad Bhuiyan (PM), Benjamin Avrahami, Hannah Fried
-# SoftDev1 pd2  
+# SoftDev1 pd2
 # P02 -- The End
 # 2020-01-07
 
@@ -42,7 +42,7 @@ def populate_database():
 def add_user(username, password):
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
-    status = True                  
+    status = True
     c.execute("SELECT * FROM users WHERE username = ?;" , (username,)) # query rows where the username and input username match
     if c.fetchone() is None: # if the username does not already exist in the database
         c.execute("INSERT INTO users(username, password) VALUES(?, ?);" , (username, password)) # stores the input login credentials in the users table
@@ -76,7 +76,7 @@ def update_password(username, oldpassword, newpassword):
     db.commit() # save changes
     db.close() # close database
     return True
-    
+
 
 # function to retrieve a user's iptracking setting
 def check_iptracking(username):
@@ -169,6 +169,15 @@ def population(nation):
     db.commit() # save changes
     db.close() # close database
     return population
+
+# function to return the all nations' names
+def returnNations():
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    all_names = c.execute("SELECT name FROM nations;") # query population where nation matches
+    db.commit() # save changes
+    db.close() # close database
+    return all_names
 
 
 # function to return the safety rating of a nation

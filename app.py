@@ -114,24 +114,44 @@ def logout():
 @app.route("/home")
 @protected
 def home():
-    return render_template("home.html")
+    user_id = users.identify(session["username"])
+    faves = get_favorites(user_id)
+    return render_template("home.html"
+                            favorites = faves)
 
-@app.route("/settings")
+@app.route("/settings", methods=['POST'])
 @protected
 def settings():
-    return render_template("settings.html")
-    #INCOMPLETE
+    user_id = users.identify(session["username"])
+    current_setting = check_iptracking(user_id)
+    chosen_setting = request.form.getlist("setting")
+    if setting[0] != currentSetting:
+        set_iptracking(user_id,chosen_setting)
+    return render_template("settings.html",
+                            chosenSetting = chosen_setting)
 
 @app.route("/browse")
 @protected
 def browse():
-    return render_template("browse.html")
-    #INCOMPLETE
+    allNations = returnNations()
+    descriptionList = []
+    populationList = []
+    safetyList = []
+    for nation in allNations:
+        descriptionList = descriptionList.append(description(nation))
+        populationList = populationList.append(population(nation))
+        safetyList = safetyList.append(safety_rating(nation))
+    return render_template("browse.html",
+                            nations = allNations,
+                            descriptions = descriptionList,
+                            populations = populationList,
+                            safeties = safetyList)
 
 @app.route("/nation")
 @protected
-def nation():
-    return render_template("nation.html")
+def nation(country):
+    
+    return render_template(country+".html")
     #INCOMPLETE
 
 # # logged in user's inventory of cards

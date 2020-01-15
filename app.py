@@ -158,7 +158,6 @@ def browse():
     all_nations=db.return_nations()
     for nation in all_nations:
         nations_data.append(db.data(nation))
-    print(nations_data)
     return render_template("browse.html",
                             nations=nations_data)
 

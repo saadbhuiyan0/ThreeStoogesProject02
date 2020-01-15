@@ -207,7 +207,7 @@ def map(nation):
     key = "key=" + locationiq_api_key
     center = "&center=" + info["nationlat"] + "," + info["nationlon"]
     zoom = "&zoom=" + info["zoom"]
-    size = "&size=" + "300x300"
+    size = "&size=" + "700x400"
     marker = "&markers=icon:small-purple-cutout|" + info["capitallat"] + "," + info["capitallon"]
     api_call = "https://maps.locationiq.com/v2/staticmap?" + key + center + zoom + size + marker
     return api_call

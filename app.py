@@ -23,9 +23,10 @@ app = Flask(__name__)
 # app.secret_key = os.urandom(32)     # for deployment
 app.secret_key = "Stooges"            # for debugging
 
-
-# initialize database
-db.init()
+try:
+    db.init()
+except:
+    print("database has already been initialized and populated")
 
 
 #=====DECORATOR=FUNCTIONS===================================================
@@ -173,119 +174,6 @@ def nation(country):
     return render_template(country+".html")
     #INCOMPLETE
 
-# # logged in user's inventory of cards
-# @app.route("/inventory")
-# @protected
-# def inventory():
-#     user_id = users.identify(session["username"])
-#     user_cards = cards.owned(user_id)
-#     print("User's Inventory: ")
-#     print(user_cards)
-#     cards_data = list()
-#     for card in user_cards:
-#         player_id = card[0]
-#         cards_data.append(tuple((players.data(player_id), card[1])))
-#     return render_template("inventory.html",
-#                             inventory = cards_data)
-
-
-# # trivia page
-# @app.route("/trivia")
-# @protected
-# def trivia():
-#     trivia = getTrivia() # list of 10 sets of questions and answer choices
-#     return render_template("trivia.html",
-#                             questionSets=trivia)
-
-
-# # rewards page
-# @app.route("/rewards", methods=["POST"])
-# @protected
-# def rewards():
-#     numCorrect = 0
-#     # user's answer choices from trivia
-#     choices = request.form.getlist("choices")
-#     # for each question
-#     for question in range(10):
-#         # if the answer choice is correct
-#         if choices[question] == "correct":
-#             # add one to the total number correct
-#             numCorrect += 1
-#     playerCards = list()
-#     if numCorrect > 4:
-#         # generates numCorrect amount of reward cards
-#         newCards = cards.generate(users.identify(session["username"]), numCorrect)
-#         # creates appropriate player cards for the rewards
-#         for card in newCards:
-#             player_id = card[0]
-#             playerCards.append(tuple((players.data(player_id), card[1])))
-#     return render_template("rewards.html",
-#                             numCorrect=numCorrect,
-#                             rewardCards=playerCards)
-
-
-# # test page to give cards
-# @app.route("/test")
-# @protected
-# def test():
-#     newCards = cards.generate(users.identify(session["username"]), 10)
-#     print("Generated Test Cards: ")
-#     print(newCards)
-#     return "Done?"
-
-
-#=====HELPER=FUNCTIONS=======================================================
-# Functions to facilitate API usage:
-
-# # returns 10 trivia questions with all relevant information
-# def getTrivia():
-#     api_call = urlopen("https://opentdb.com/api.php?amount=10&category=21&type=multiple")
-#     response = api_call.read()
-#     data = json.loads(response)
-#     data = data["results"]
-#     trivia = []
-#     questionNum = 0
-#     while questionNum < 10:
-#         questionSet = []
-#         questionSet.append(data[questionNum]["question"])
-#         questionSet.append(data[questionNum]["correct_answer"])
-#         questionSet.append(data[questionNum]["incorrect_answers"][0])
-#         questionSet.append(data[questionNum]["incorrect_answers"][1])
-#         questionSet.append(data[questionNum]["incorrect_answers"][2])
-#         trivia.append(questionSet)
-#         questionNum += 1
-#     return trivia
-
-# #get photo of a searched player from balldontlie
-# def getPhoto(idnum):
-#     api_call = urlopen("https://www.balldontlie.io/api/v1/players/" + idnum)
-#     response = api_call.read()
-#     data = json.loads(response)
-#     firstName = correct(data["first_name"])
-#     lastName = correct(data["last_name"])
-#
-#     imgsrc = "https://nba-players.herokuapp.com/players/" + lastName + "/" + first_name
-#     return imgsrc
-
-# #make sure the names of players are easily manipulated
-# def correct(name):
-#     while "." in name:
-#         rem = name.index('.')
-#         name = name[0:rem] + name[rem+1:len(name)]
-#     while " " in name:
-#         rem = name.index(' ')
-#         name = name[0:rem] + "_"
-
-# #create rarity spread for rewards
-# def createSpread(num):
-#     list = [1,1,1,1,1]
-#     i = 0
-#     while i < num:
-#         j = random.randint(0,4)
-#         if list[j] <= 5:
-#             list[j] +=1
-#             i += 1
-#     return list
 
 #============================================================================
 

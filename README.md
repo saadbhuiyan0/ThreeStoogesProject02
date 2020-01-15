@@ -7,16 +7,19 @@
 
 ## What is Wack Travel Plans?
 Wack Travel Plans is your premier site for all things travel related. 
-Make an account to find nations near you to travel to, our site will provide you with all the information you need.
-You will find everything from travel time to safety rating to data such as weather and crime.
+Make an account to find nations to travel to, our site will provide you with all the information you need.
+You will find a ton of data from weather to population.
+We even give our own little rating.
 Before you even think about your next vacation, just browse the site for a few minutes! 
 You can thank us later.
 
 ## APIs Implemented
-APIs with hyperlinks will be added as they are implemented.
+[REST Countries](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_restcountries.pdf)
+[Wikipedia](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_wikipedia.pdf)
+[MetaWeather](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_metaweather.pdf)
+[LocationIQ](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_locationiq.pdf)
 
 ## Launch Codes
-
 - Clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02). No key generation needed.
 - In your terminal - within the ThreeStoogesProject02 directory - run: `virtualenv venv`
 - Then: `source venv/bin/activate`

@@ -53,6 +53,13 @@ def root():
     # else redirect to login
     return redirect(url_for("login"))
 
+HTML_TEMPLATE = Template("""
+<h1>Hello ${some_place}!</h1>
+
+<img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=${some_place}" alt="map of ${some_place}">
+
+<img src="https://maps.googleapis.com/maps/api/streetview?size=700x300&location=${some_place}" alt="street view of ${some_place}">
+""")
 
 # login page and authentication of login
 @app.route("/login")
@@ -137,37 +144,22 @@ def settings():
         # else if false is returned by db
         else:
             flash("Password incorrect.")
-    current_setting = db.check_iptracking(username)
-    chosen_setting = request.form.getlist("setting")
-    if chosen_setting != []:
-        if chosen_setting[0] != currentSetting:
-            db.set_iptracking(username,chosen_setting)
-    return render_template("settings.html",
-                            chosenSetting = chosen_setting)
+    return render_template("settings.html")
 
 @app.route("/browse")
 @protected
 def browse():
-    allNations = returnNations()
-    descriptionList = []
-    populationList = []
-    safetyList = []
-    for nation in allNations:
-        descriptionList = descriptionList.append(description(nation))
-        populationList = populationList.append(population(nation))
-        safetyList = safetyList.append(safety_rating(nation))
-    return render_template("browse.html",
-                            nations = allNations,
-                            descriptions = descriptionList,
-                            populations = populationList,
-                            safeties = safetyList)
+    return render_template("browse.html")
+
+@app.route("/country")
+@protected
+def testmap():
+    return render_template("country.html")
 
 @app.route("/nation")
 @protected
-def nation(country):
-
-    return render_template(country+".html")
-    #INCOMPLETE
+def nation(nation):
+    return(HTML_TEMPLATE.substitute(some_place=nation))
 
 
 #============================================================================

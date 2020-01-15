@@ -21,7 +21,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, description TEXT, population INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, description TEXT, population INTEGER);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -48,9 +48,8 @@ def fill_nations():
         file = csv.DictReader(file) #read through file using DictReader
         for row in file: # goes through each row of the file
             print("reading " + row["nation"] + " from csv")
-            command = "INSERT INTO nations(nation,code,rating) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["rating"] + "\');" # we can loop like this because the first row become fieldnames
+            command = "INSERT INTO nations(nation,code,rating,image) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["rating"] + "\',\'" + row["image"] + "\');" # we can loop like this because the first row become fieldnames
             c.execute(command)
-    c.execute("")
     db.commit() # save changes
     db.close() # close database
 

@@ -79,6 +79,10 @@ Populate database upon init when app is run. Plan on adding more.
 hannahF -- 2020-01-14 08:36
 Morning catch-up work getting most of the routes done. Really should have done this earlier. Need to focus on the /<nation> route now
 
+benjaminA -- 2020-01-14 09:00
+Added buttons to navbar, and adjusted their relative positionings
+Routine debugging
+
 saadB -- 2020-01-14 09:16
 Debug to make home work.
 Make update password work.
@@ -95,4 +99,13 @@ dynamic url work
 saadB -- 2020-01-14 21:57
 Finish csv, reconfigure db.py.
 Return nations sorted alphabetically.
+
+benjaminA -- 2020-01-14 22:30
+Created /country page (demo, will generalize soon)
+In it:
+  Has a non-static map, and trimmed it to be a good size
+  Map has a marker at one specific point
+  If certain buttons below the map are clicked, the marker appears (if not already there) and a popup message appears (if not already there)
+  If the clear button is clicked, the marker and message disappear
+
 Debug app.py.

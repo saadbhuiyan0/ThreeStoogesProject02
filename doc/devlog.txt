@@ -122,5 +122,7 @@ Update API pdfs.
 Update devlog components, component map, and database layouts.
 Update README.
 
-
-
+saadB -- 2020-01-15 12:06
+Add more columns to nations table to hold data necessary to generate maps.
+Call APIs to get lat/lon for nations and nation capitals.
+Make amendments to nations.csv.

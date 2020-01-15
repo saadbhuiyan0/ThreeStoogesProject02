@@ -11,7 +11,8 @@
 import sqlite3
 import csv       # facilitate CSV I/O
 from urllib.request import urlopen
-import json   
+import json
+import time
 
 
 DB_FILE = 'stooges.db'
@@ -24,7 +25,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, capital TEXT, population INTEGER, area INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, capital TEXT, population INTEGER, area INTEGER, nationlat TEXT, nationlon TEXT, capitallat TEXT, capitallon TEXT, zoom TEXT);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -51,9 +52,26 @@ def fill_nations():
         file = csv.DictReader(file) #read through file using DictReader
         for row in file: # goes through each row of the file
             print("updating " + row["nation"] + " in database from csv and api")
-            api_call = "https://restcountries.eu/rest/v2/alpha/" + row["code"]
-            data = json.loads(urlopen(api_call).read())
-            c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area) VALUES(?,?,?,?,?,?,?);" , (row["nation"],row["code"],row["rating"],row["image"],data["capital"],data["population"],data["area"]))
+            restcountries_api_call = "https://restcountries.eu/rest/v2/alpha/" + row["code"]
+            restcountries_data = json.loads(urlopen(restcountries_api_call).read())
+            nation_name = row["nation"].replace(" ", "%20")
+            locationiq_nation_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + nation_name + "&format=json&key=" + "af54e0b0e10a5c"
+            locationiq_nation_data = json.loads(urlopen(locationiq_nation_api_call).read())
+            time.sleep(0.75)
+            capital_name = restcountries_data["capital"].replace(" ", "%20")
+            if row["code"] == "US":
+                capital_name = "Washington"
+            if row["code"] == "BR":
+                capital_name = "Brasilia"
+            if row["code"] == "CO":
+                capital_name = "Bogota"
+            locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + "af54e0b0e10a5c"
+            locationiq_capital_data = json.loads(urlopen(locationiq_capital_api_call).read())
+            time.sleep(0.75)
+            c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
+                            (row["nation"],row["code"],row["rating"],row["image"],
+                            restcountries_data["capital"],restcountries_data["population"],restcountries_data["area"],
+                            locationiq_nation_data[0]["lat"],locationiq_nation_data[0]["lon"],locationiq_capital_data[0]["lat"],locationiq_capital_data[0]["lon"],row["zoom"]))
     db.commit() # save changes
     db.close() # close database
 

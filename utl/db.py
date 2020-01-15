@@ -17,6 +17,8 @@ import time
 
 DB_FILE = 'stooges.db'
 
+locationiq_api_key = "af54e0b0e10a5c"
+
 
 # initializes the database tables if they don't exist
 def init():
@@ -55,7 +57,7 @@ def fill_nations():
             restcountries_api_call = "https://restcountries.eu/rest/v2/alpha/" + row["code"]
             restcountries_data = json.loads(urlopen(restcountries_api_call).read())
             nation_name = row["nation"].replace(" ", "%20")
-            locationiq_nation_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + nation_name + "&format=json&key=" + "af54e0b0e10a5c"
+            locationiq_nation_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + nation_name + "&format=json&key=" + locationiq_api_key
             locationiq_nation_data = json.loads(urlopen(locationiq_nation_api_call).read())
             time.sleep(0.75)
             capital_name = restcountries_data["capital"].replace(" ", "%20")
@@ -65,7 +67,7 @@ def fill_nations():
                 capital_name = "Brasilia"
             if row["code"] == "CO":
                 capital_name = "Bogota"
-            locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + "af54e0b0e10a5c"
+            locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + locationiq_api_key
             locationiq_capital_data = json.loads(urlopen(locationiq_capital_api_call).read())
             time.sleep(0.75)
             c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
@@ -114,30 +116,6 @@ def update_password(username, oldpassword, newpassword):
     db.commit() # save changes
     db.close() # close database
     return True
-
-
-# # function to retrieve a user's iptracking setting
-# def check_iptracking(username):
-#     db = sqlite3.connect(DB_FILE) # open file
-#     c = db.cursor() # facilitate db ops
-#     setting = False
-#     c.execute("SELECT iptracking FROM users WHERE username = ?;" , (username,)) # query iptracking setting where the input name match
-#     for row in c.fetchall(): # rows that are queried
-#         if (row[0] == "True"): # if iptracking is true
-#             setting = True # setting is changed to true
-#     db.commit() # save changes
-#     db.close() # close database
-#     return setting
-
-
-# # function to set a user's iptracking setting
-# def set_iptracking(username, setting):
-#     db = sqlite3.connect(DB_FILE) # open file
-#     c = db.cursor() # facilitate db ops
-#     c.execute("UPDATE users SET iptracking = ? WHERE username = ?;" , (setting, username)) # update ip tracking setting for a user
-#     db.commit() # save changes
-#     db.close() # close database
-#     return setting
 
 
 # function to get a user's favorites
@@ -213,30 +191,23 @@ def data(nation):
         data["capital"] = row[5]
         data["population"] = row[6]
         data["area"] = row[7]
+        data["nationlat"] = row[8]
+        data["nationlon"] = row[9]
+        data["capitallat"] = row[10]
+        data["capitallon"] = row[11]
+        data["zoom"] = row[12]
     db.commit() # save changes
     db.close() # close database
     return data
 
 
-# function to return the image of a nation's flag
-def image(nation):
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    c.execute("SELECT image FROM nations WHERE nation = ?;" , (nation,)) # query rating where nation matches
-    for row in c.fetchall(): # rows that are queried
-        image = row[0] # set rating to queried row
-    db.commit() # save changes
-    db.close() # close database
-    return image
-
-
-# function to return the population of a nation
-def population(nation):
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    c.execute("SELECT population FROM nations WHERE nation = ?;" , (nation,)) # query population where nation matches
-    for row in c.fetchall(): # rows that are queried
-        population = row[0] # set population to queried row
-    db.commit() # save changes
-    db.close() # close database
-    return population
+# function to return api call for map of a nation
+def map(nation):
+    info = data(nation)
+    key = "key=" + locationiq_api_key
+    center = "&center=" + info["nationlat"] + "," + info["nationlon"]
+    zoom = "&zoom=" + info["zoom"]
+    size = "&size=" + "300x300"
+    marker = "&markers=icon:small-purple-cutout|" + info["capitallat"] + "," + info["capitallon"]
+    api_call = "https://maps.locationiq.com/v2/staticmap?" + key + center + zoom + size + marker
+    return api_call

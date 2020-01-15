@@ -127,6 +127,8 @@ def logout():
 def home():
     faves = db.get_favorites(session["username"]).split(",")
     faves.pop(len(faves)-1)
+    for i in faves:
+        print(db.map(i))
     return render_template("home.html",
                             favorites = faves)
 

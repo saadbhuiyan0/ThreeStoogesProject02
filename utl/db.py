@@ -9,7 +9,10 @@
 
 # importing the sqlite3 module to interface with sqlite databases
 import sqlite3
-import csv       #facilitate CSV I/O
+import csv       # facilitate CSV I/O
+from urllib.request import urlopen
+import json   
+
 
 DB_FILE = 'stooges.db'
 
@@ -21,7 +24,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, description TEXT, population INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, capital TEXT, population INTEGER, area INTEGER);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -36,7 +39,7 @@ def populate_database():
     fill_nations()
     print("data cached")
     print("add favorite nation United States of America to admin: " + str(add_favorite("admin", "United States of America")))
-    print("add favorite nation North Korea to admin: " + str(add_favorite("admin", "North Korea")))
+    print("add favorite nation Switzerland to admin: " + str(add_favorite("admin", "Switzerland")))
     print("database populated")
 
 
@@ -47,9 +50,10 @@ def fill_nations():
     with open("nations.csv") as file: # nnations.csv opened
         file = csv.DictReader(file) #read through file using DictReader
         for row in file: # goes through each row of the file
-            print("reading " + row["nation"] + " from csv")
-            command = "INSERT INTO nations(nation,code,rating,image) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["rating"] + "\',\'" + row["image"] + "\');" # we can loop like this because the first row become fieldnames
-            c.execute(command)
+            print("updating " + row["nation"] + " in database from csv and api")
+            api_call = "https://restcountries.eu/rest/v2/alpha/" + row["code"]
+            data = json.loads(urlopen(api_call).read())
+            c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area) VALUES(?,?,?,?,?,?,?);" , (row["nation"],row["code"],row["rating"],row["image"],data["capital"],data["population"],data["area"]))
     db.commit() # save changes
     db.close() # close database
 
@@ -163,16 +167,49 @@ def remove_favorite(username, nation):
     return True
 
 
-# function to return the description of a nation
-def description(nation):
+# function to return the all nations' names
+def return_nations():
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
-    c.execute("SELECT description FROM nations WHERE nation = ?;" , (nation,)) # query description where nation matches
-    for row in c.fetchall(): # rows that are queried
-        description = row[0] # set description to queried row
+    all_names = list()
+    c.execute("SELECT nation FROM nations ORDER BY nation;") # query all nation names ordered alphabetically
+    for row in c.fetchall():
+        all_names.append(row[0])
     db.commit() # save changes
     db.close() # close database
-    return description
+    return all_names
+
+
+# function to return the rating of a nation
+def data(nation):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT * FROM nations WHERE nation = ?;" , (nation,))
+    data = dict()
+    for row in c.fetchall(): # rows that are queried
+        data["nation_id"] = row[0]
+        data["nation"] = row[1]
+        data["code"] = row[2]
+        data["rating"] = row[3]
+        data["image"] = row[4]
+        data["capital"] = row[5]
+        data["population"] = row[6]
+        data["area"] = row[7]
+    db.commit() # save changes
+    db.close() # close database
+    return data
+
+
+# function to return the image of a nation's flag
+def image(nation):
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
+    c.execute("SELECT image FROM nations WHERE nation = ?;" , (nation,)) # query rating where nation matches
+    for row in c.fetchall(): # rows that are queried
+        image = row[0] # set rating to queried row
+    db.commit() # save changes
+    db.close() # close database
+    return image
 
 
 # function to return the population of a nation
@@ -185,24 +222,3 @@ def population(nation):
     db.commit() # save changes
     db.close() # close database
     return population
-
-# function to return the all nations' names
-def return_nations():
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    all_names = c.execute("SELECT name FROM nations ORDER BY name;") # query all nation names ordered alphabetically
-    db.commit() # save changes
-    db.close() # close database
-    return all_names
-
-
-# function to return the rating of a nation
-def rating(nation):
-    db = sqlite3.connect(DB_FILE) # open file
-    c = db.cursor() # facilitate db ops
-    c.execute("SELECT safety_rating FROM nations WHERE nation = ?;" , (nation,)) # query rating where nation matches
-    for row in c.fetchall(): # rows that are queried
-        rating = row[0] # set rating to queried row
-    db.commit() # save changes
-    db.close() # close database
-    return rating

@@ -99,6 +99,7 @@ dynamic url work
 saadB -- 2020-01-14 21:57
 Finish csv, reconfigure db.py.
 Return nations sorted alphabetically.
+Debug app.py
 
 benjaminA -- 2020-01-14 22:30
 Created /country page (demo, will generalize soon)
@@ -108,4 +109,13 @@ In it:
   If certain buttons below the map are clicked, the marker appears (if not already there) and a popup message appears (if not already there)
   If the clear button is clicked, the marker and message disappear
 
+saadB -- 2020-01-14 23:50
 Debug app.py.
+Add images to database.
+Make API calls to REST Countries to get more information on the countries and store it all in the database.
+Create method to pass a dictionary of all the data for a given nations.
+Create a route browse which would get all the nations in alphabetical order, and then the data for each nation.
+It passes all the data to the browse template which produces cards with the nation's name, flag, and rating.
+
+
+

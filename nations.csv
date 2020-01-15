@@ -1,4 +1,4 @@
-nation,code,rating,
+nation,code,rating,image
 United States of America,US,Not Afraid To Use Excessive Force,https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg
 China,CN,You Are Being Tracked,https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg
 Japan,JP,Everything Is A Robot,https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg
@@ -20,7 +20,7 @@ Saudi Arabia,SA,Flammable Oil And Money Everywhere,https://upload.wikimedia.org/
 Turkey,TR,Crazy Kebab Lovers,https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg
 Switzerland,CH,Too Much Chocolate,https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_%28Pantone%29.svg
 Poland,PL,Actually Owned by Germany,https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg
-Taiwan,TW,Boba As A Choking Hazard,https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg
+Taiwan,TW,Boba Is A Choking Hazard,https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg
 Sweden,SE,IKEA And Meatballs,https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg
 Belgium,BE,Beautiful Architecture I Guess,https://upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_Belgium_%28civil%29.svg
 Argentina,AR,They Don't Play Nice,https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg

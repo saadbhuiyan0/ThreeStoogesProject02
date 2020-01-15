@@ -23,6 +23,9 @@ app = Flask(__name__)
 # app.secret_key = os.urandom(32)     # for deployment
 app.secret_key = "Stooges"            # for debugging
 
+
+# db.init() 
+
 try:
     db.init()
 except:
@@ -149,7 +152,13 @@ def settings():
 @app.route("/browse")
 @protected
 def browse():
-    return render_template("browse.html")
+    nations_data=list()
+    all_nations=db.return_nations()
+    for nation in all_nations:
+        nations_data.append(db.data(nation))
+    print(nations_data)
+    return render_template("browse.html",
+                            nations=nations_data)
 
 @app.route("/country")
 @protected

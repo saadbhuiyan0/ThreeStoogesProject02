@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <div class="row">
+        {% for nation in nations %}
+        <div class="col-md-3 mb-5">
+            <div class="card">
+                <img src={{nation['image']}} class="card-img-top">
+                <div class="card-body">
+                    <h3 class="card-title">{{nation['nation']}}</h3>
+                    <p class="card-text">
+                      {{nation['rating']}} <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock %}

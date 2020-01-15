@@ -53,6 +53,13 @@ def root():
     # else redirect to login
     return redirect(url_for("login"))
 
+HTML_TEMPLATE = Template("""
+<h1>Hello ${some_place}!</h1>
+
+<img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=${some_place}" alt="map of ${some_place}">
+
+<img src="https://maps.googleapis.com/maps/api/streetview?size=700x300&location=${some_place}" alt="street view of ${some_place}">
+""")
 
 # login page and authentication of login
 @app.route("/login")
@@ -162,12 +169,10 @@ def browse():
                             populations = populationList,
                             safeties = safetyList)
 
-@app.route("/nation")
+@app.route("/<nation>")
 @protected
-def nation(country):
-
-    return render_template(country+".html")
-    #INCOMPLETE
+def nation(nation):
+    return(HTML_TEMPLATE.substitute(some_place=nation))
 
 
 #============================================================================

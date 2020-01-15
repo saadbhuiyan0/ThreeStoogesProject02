@@ -147,7 +147,7 @@ def settings():
 @app.route("/browse")
 @protected
 def browse():
-    allNations = returnNations()
+#    allNations = returnNations()
     descriptionList = []
     populationList = []
     safetyList = []
@@ -160,6 +160,11 @@ def browse():
                             descriptions = descriptionList,
                             populations = populationList,
                             safeties = safetyList)
+
+@app.route("/country")
+@protected
+def testmap():
+    return render_template("country.html")
 
 @app.route("/nation")
 @protected

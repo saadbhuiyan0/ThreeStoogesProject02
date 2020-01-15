@@ -32,7 +32,7 @@ def init():
 def populate_database():
     print("populating database...")
     print("create admin: " + str(add_user("admin", "password")))
-    print("set admin's iptracking to True: " + str(set_iptracking("admin", "True")))
+#    print("set admin's iptracking to True: " + str(set_iptracking("admin", "True")))
     print("add favorite nation United States of America to admin: " + str(add_favorite("admin", "United States of America")))
     print("add favorite nation North Korea to admin: " + str(add_favorite("admin", "North Korea")))
     print("database populated")

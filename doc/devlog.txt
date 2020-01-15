@@ -117,7 +117,7 @@ Create method to pass a dictionary of all the data for a given nations.
 Create a route browse which would get all the nations in alphabetical order, and then the data for each nation.
 It passes all the data to the browse template which produces cards with the nation's name, flag, and rating.
 
-saadB -- 2020-01-15 00:12
+saadB -- 2020-01-15 00:21
 Update API pdfs.
 Update devlog components, component map, and database layouts.
 Update README.

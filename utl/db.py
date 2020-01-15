@@ -21,7 +21,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, description TEXT, rating TEXT, POPULATION INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, description TEXT, population INTEGER);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -42,16 +42,17 @@ def populate_database():
 
 # fill nations table with data
 def fill_nations():
+    db = sqlite3.connect(DB_FILE) # open file
+    c = db.cursor() # facilitate db ops
     with open("nations.csv") as file: # nnations.csv opened
         file = csv.DictReader(file) #read through file using DictReader
         for row in file: # goes through each row of the file
             print("reading " + row["nation"] + " from csv")
-            db = sqlite3.connect(DB_FILE) # open file
-            c = db.cursor() # facilitate db ops
-            command = "INSERT INTO nations(nation,code,description,safety_rating) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["description"] + "\',\'" + row["rating"] + "\');" # we can loop like this because the first row become fieldnames
+            command = "INSERT INTO nations(nation,code,rating) VALUES(\'" + row["nation"] + "\',\'" + row["code"] + "\',\'" + row["rating"] + "\');" # we can loop like this because the first row become fieldnames
             c.execute(command)
-            db.commit() # save changes
-            db.close() # close database
+    c.execute("")
+    db.commit() # save changes
+    db.close() # close database
 
 
 # function to register a user if the username doesn't exist in the database
@@ -187,22 +188,22 @@ def population(nation):
     return population
 
 # function to return the all nations' names
-def returnNations():
+def return_nations():
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
-    all_names = c.execute("SELECT name FROM nations;") # query all nation names
+    all_names = c.execute("SELECT name FROM nations ORDER BY name;") # query all nation names ordered alphabetically
     db.commit() # save changes
     db.close() # close database
     return all_names
 
 
-# function to return the safety rating of a nation
-def safety_rating(nation):
+# function to return the rating of a nation
+def rating(nation):
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops
-    c.execute("SELECT safety_rating FROM nations WHERE nation = ?;" , (nation,)) # query safety rating where nation matches
+    c.execute("SELECT safety_rating FROM nations WHERE nation = ?;" , (nation,)) # query rating where nation matches
     for row in c.fetchall(): # rows that are queried
-        safety_rating = row[0] # set safety_rating to queried row
+        rating = row[0] # set rating to queried row
     db.commit() # save changes
     db.close() # close database
-    return safety_rating
+    return rating

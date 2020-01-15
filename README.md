@@ -14,10 +14,10 @@ Before you even think about your next vacation, just browse the site for a few m
 You can thank us later.
 
 ## APIs Implemented
-[REST Countries](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_restcountries.pdf)
-[Wikipedia](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_wikipedia.pdf)
-[MetaWeather](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_metaweather.pdf)
-[LocationIQ](https://github.com/saadbhuiyan0/ThreeStoogesProject02/doc/411_locationiq.pdf)
+- [REST Countries](doc/411_restcountries.pdf)
+- [Wikipedia](doc/411_wikipedia.pdf)
+- [MetaWeather](doc/411_metaweather.pdf)
+- [LocationIQ](doc/411_locationiq.pdf)
 
 ## Launch Codes
 - Clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02). No key generation needed.

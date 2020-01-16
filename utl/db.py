@@ -59,7 +59,7 @@ def fill_nations():
             nation_name = row["nation"].replace(" ", "%20")
             locationiq_nation_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + nation_name + "&format=json&key=" + locationiq_api_key
             locationiq_nation_data = json.loads(urlopen(locationiq_nation_api_call).read())
-            time.sleep(0.75)
+            time.sleep(1)
             capital_name = restcountries_data["capital"].replace(" ", "%20")
             if row["code"] == "US":
                 capital_name = "Washington"
@@ -69,7 +69,7 @@ def fill_nations():
                 capital_name = "Bogota"
             locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + locationiq_api_key
             locationiq_capital_data = json.loads(urlopen(locationiq_capital_api_call).read())
-            time.sleep(0.75)
+            time.sleep(1)
             c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
                             (row["nation"],row["code"],row["rating"],row["image"],
                             restcountries_data["capital"],restcountries_data["population"],restcountries_data["area"],

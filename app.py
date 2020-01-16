@@ -56,6 +56,7 @@ def root():
     # else redirect to login
     return redirect(url_for("login"))
 
+
 #HTML_TEMPLATE = Template("""
 #<h1>Hello ${some_place}!</h1>
 
@@ -63,6 +64,7 @@ def root():
 
 #<img src="https://maps.googleapis.com/maps/api/streetview?size=700x300&location=${some_place}" alt="street view of ${some_place}">
 #""")
+
 
 # login page and authentication of login
 @app.route("/login")
@@ -125,12 +127,13 @@ def logout():
 @app.route("/home")
 @protected
 def home():
-    faves = db.get_favorites(session["username"]).split(",")
-    faves.pop(len(faves)-1)
-    for i in faves:
-        print(db.map(i))
+    faves = db.get_favorites(session["username"])
+    if faves != "":
+        faves = faves.split(",")
+        faves.pop(len(faves)-1)
     return render_template("home.html",
                             favorites = faves)
+
 
 @app.route("/settings", methods=['GET','POST'])
 @protected
@@ -151,6 +154,7 @@ def settings():
             flash("Password incorrect.")
     return render_template("settings.html")
 
+
 @app.route("/browse")
 @protected
 def browse():
@@ -161,10 +165,12 @@ def browse():
     return render_template("browse.html",
                             nations=nations_data)
 
+
 @app.route("/country")
 @protected
 def testmap():
     return render_template("country.html")
+
 
 @app.route("/nation")
 @protected

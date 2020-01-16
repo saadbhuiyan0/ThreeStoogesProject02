@@ -18,7 +18,7 @@
   <br>
   <div class="row">
   {% for nation in nations %}
-    {% if nation['nation'] in favorites %} 
+    {% if nation['nation'] in favorites %}
       <div class="col-md-3 mb-5">
         <div class="card">
           <img src={{nation['flag']}} class="card-img-top">
@@ -30,7 +30,7 @@
             <a href={{"/nation/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to nation</a>
             <div id="overlay">
               <form action="/fav">
-                <input class="btn-primary" id="helpjs" type="text" name="nation" value={{nation['nation']}}>
+                <input class="btn-primary helpjs" type="text" name="nation" value="{{nation['nation']}}">
                 <input class="btn-primary" type="submit" name="submit" value="Unfavorite this Nation">
               </form>
             </div>

@@ -26,7 +26,7 @@ app.secret_key = os.urandom(32)     # for deployment
 # app.secret_key = "Stooges"        # for debugging
 
 
-# db.init() 
+# db.init()
 
 
 try:
@@ -203,7 +203,7 @@ def nation(nation_code):
     weather2 = metaweather_data["consolidated_weather"][2]
     weather3 = metaweather_data["consolidated_weather"][3]
     weather4 = metaweather_data["consolidated_weather"][4]
-    return render_template("nation.html", 
+    return render_template("nation.html",
                             nation=facts["nation"],capital=facts["capital"],flag=facts["flag"],
                             area=facts["area"],population=facts["population"],
                             lat=facts["nationlat"], lon=facts["nationlon"],

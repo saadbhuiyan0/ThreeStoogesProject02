@@ -17,11 +17,10 @@ import time
 DB_FILE = 'stooges.db'
 
 
-locationiq_api_key = open("api_key.txt", "r").readline()
-
-
 # initializes the database tables if they don't exist
-def init():
+def init(key):
+    global locationiq_api_key 
+    locationiq_api_key = key
     print("initializing database...")
     db = sqlite3.connect(DB_FILE) # open file
     c = db.cursor() # facilitate db ops

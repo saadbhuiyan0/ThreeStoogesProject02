@@ -26,13 +26,29 @@ app.secret_key = os.urandom(32)     # for deployment
 # app.secret_key = "Stooges"        # for debugging
 
 
-# db.init()
+print("checking for LocationIQ api key in api_key.txt...")
+with open("api_key.txt", "r+") as api_key:
+    global locationiq_api_key
+    if api_key.readline() == "":
+        print("looks like you haven't entered your LocationIQ api key")
+        print("please follow the instructions in README.md to get a key")
+        locationiq_api_key = input("then enter your api key here: ")
+        print("saving LocationIQ api key in api_key.txt...")
+        api_key.write(locationiq_api_key)
+        print("api key saved, you are good to go!")
+        api_key.close()
+    else:
+        print("api key found")
+        locationiq_api_key = api_key.readline()
 
 
-try:
-    db.init()
-except:
-    print("database has already been initialized and populated")
+db.init(locationiq_api_key)
+
+
+# try:
+#     db.init()
+# except:
+#     print("database has already been initialized and populated")
 
 
 #=====DECORATOR=FUNCTIONS===================================================

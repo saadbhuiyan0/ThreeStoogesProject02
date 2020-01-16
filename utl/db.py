@@ -27,7 +27,7 @@ def init():
     c = db.cursor() # facilitate db ops
     # creating the users table
     c.execute("CREATE TABLE IF NOT EXISTS users(user_id INTEGER UNIQUE PRIMARY KEY, username TEXT UNIQUE, password TEXT, favorites TEXT);") # iptracking TEXT DEFAULT 'False', removed
-    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, image TEXT, capital TEXT, population INTEGER, area INTEGER, nationlat TEXT, nationlon TEXT, capitallat TEXT, capitallon TEXT, zoom TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS nations(nation_id INTEGER UNIQUE PRIMARY KEY, nation TEXT UNIQUE, code TEXT UNIQUE, rating TEXT, flag TEXT, capital TEXT, population INTEGER, area INTEGER, nationlat TEXT, nationlon TEXT, capitallat TEXT, capitallon TEXT, zoom TEXT);")
     db.commit() # save changes
     db.close() # close database
     print("database initialized")
@@ -70,8 +70,8 @@ def fill_nations():
             locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + locationiq_api_key
             locationiq_capital_data = json.loads(urlopen(locationiq_capital_api_call).read())
             time.sleep(1)
-            c.execute("INSERT INTO nations(nation,code,rating,image,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
-                            (row["nation"],row["code"],row["rating"],row["image"],
+            c.execute("INSERT INTO nations(nation,code,rating,flag,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
+                            (row["nation"],row["code"],row["rating"],restcountries_data["flag"],
                             restcountries_data["capital"],restcountries_data["population"],restcountries_data["area"],
                             locationiq_nation_data[0]["lat"],locationiq_nation_data[0]["lon"],locationiq_capital_data[0]["lat"],locationiq_capital_data[0]["lon"],row["zoom"]))
     db.commit() # save changes
@@ -187,7 +187,7 @@ def data(nation):
         data["nation"] = row[1]
         data["code"] = row[2]
         data["rating"] = row[3]
-        data["image"] = row[4]
+        data["flag"] = row[4]
         data["capital"] = row[5]
         data["population"] = row[6]
         data["area"] = row[7]

@@ -186,12 +186,22 @@ def nation(nation_code):
     for i in nat:
         if i.replace(" ","") == nation_code:
             facts = db.data(i)
+    metaweather_woeid = "https://www.metaweather.com/api/location/search/?lattlong=" + facts["capitallat"] + "," + facts["capitallon"]
+    print(metaweather_woeid)
+    woeid = json.loads(urlopen(metaweather_woeid).read())
+    woeid = str(woeid[0]["woeid"])
+    print(woeid)
+    metaweather_api_call = "https://www.metaweather.com/api/location/" + woeid
+    print(metaweather_api_call)
+    metaweather_data = json.loads(urlopen(metaweather_api_call).read())
+    metaweather_data = metaweather_data["consolidated_weather"]
     return render_template("nation.html", 
                             nation=facts["nation"],capital=facts["capital"],flag=facts["flag"],
                             area=facts["area"],population=facts["population"],
                             lat=facts["nationlat"], lon=facts["nationlon"],
                             clat=facts["capitallat"], clon=facts["capitallon"],
-                            zoom=facts["zoom"])
+                            zoom=facts["zoom"],
+                            weather=metaweather_data)
 
 #============================================================================
 

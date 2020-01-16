@@ -128,6 +128,10 @@ Call APIs to get lat/lon for nations and nation capitals.
 Make amendments to nations.csv.
 Create method that returns the api call necessary to generate a map of the nation with marker on capital.
 
+benjaminA -- 2020-01-15 17:45
+Fixed the links to the countries to exclude spaces
+Removed unnecessary second list from home page
+
 saadB -- 2020-01-15 19:46
 Update map size.
 Update zoom levels for each nation.
@@ -138,3 +142,14 @@ Update instructions and information in README.
 saadB -- 2020-01-15 21:10
 Remove Wikipedia API due to Wikimedia politics.
 Remove images from csv, grab from API instead.
+
+benjaminA -- 2020-01-15 23:45
+Made country routing dynamic
+Generalized map (Pulled nation lat/lng, capital lat/lng, zoom from database and brought to js)
+Changed size of map on country page
+Made second button on card clickable
+Allowed countries to be favorited and unfavorited (added second route to change database), and made it change on home page
+Changed format of countries on home to be cards
+Put in a jumbotron on homepage
+Added footer, adjusted navbar
+Resolved issues from country -> nation switch

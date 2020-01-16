@@ -138,3 +138,7 @@ Update instructions and information in README.
 saadB -- 2020-01-15 21:10
 Remove Wikipedia API due to Wikimedia politics.
 Remove images from csv, grab from API instead.
+
+saadB -- 2020-01-15 22:35
+Make nation page nice with BootStrap.
+Add other text popups to js.

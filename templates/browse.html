@@ -15,7 +15,11 @@
                     <div id="overlay">
                       <form action="/fav">
                       <input class="btn-primary" id="helpjs" type="text" name="country" value={{nation['nation']}}>
-                      <input class="btn-primary" type="submit" name="submit" value="Favorite this country">
+                      {% if nation['nation'] in favorites %}
+                        <input class="btn-primary" type="submit" name="submit" value="Unfavorite this country">
+                      {% else %} 
+                        <input class="btn-primary" type="submit" name="submit" value="Favorite this country">
+                      {% endif %}
                       </form>
                     </div>
                 </div>

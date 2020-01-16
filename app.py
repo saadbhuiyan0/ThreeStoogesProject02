@@ -165,6 +165,11 @@ def browse():
     return render_template("browse.html",
                             nations=nations_data)
 
+@app.route("/fav")
+@protected
+def refavorite():
+    db.add_favorite(session["username"],request.args["country"])
+    return redirect(url_for("home"))
 
 
 @app.route("/country/<country_code>")

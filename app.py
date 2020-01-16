@@ -22,8 +22,8 @@ app = Flask(__name__)
 
 
 # set up sessions with random secret key
-# app.secret_key = os.urandom(32)     # for deployment
-app.secret_key = "Stooges"            # for debugging
+app.secret_key = os.urandom(32)     # for deployment
+# app.secret_key = "Stooges"        # for debugging
 
 
 # db.init() 
@@ -216,6 +216,6 @@ def nation(nation_code):
 
 
 if __name__ == "__main__":
-    app.debug = True
-    # app.debug = False
+    # app.debug = True
+    app.debug = False
     app.run()

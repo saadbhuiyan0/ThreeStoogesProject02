@@ -11,7 +11,7 @@
                     <p class="card-text">
                       {{nation['rating']}} <br>
                     </p>
-                    <a href={{nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
+                    <a href={{"/country/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
                     <form action="/fav">
                       <input class="btn-primary" type="submit" name={{nation['nation']}} value="Favorite this country">
                     </form>

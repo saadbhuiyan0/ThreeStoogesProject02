@@ -5,9 +5,12 @@
   background-color: aliceblue;
 }
 #mapid {
-  height: 750px;
-  width: 750px;
+  height: 400px;
+  width: 700px;
 }
 .notshown {
   opacity: 0;
+}
+#helpjs {
+  display: none;
 }

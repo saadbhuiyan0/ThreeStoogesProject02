@@ -7,7 +7,7 @@
   <ul class="list-group" id="favorites">
     {% for i in favorites %}
       <li class="list-group-item">
-        <a href={{i.replace(" ","")}}>{{i}}</a>
+        <a href={{"/country/"+i.replace(" ","")}}>{{i}}</a>
       </li>
     {% endfor %}
   </ul>

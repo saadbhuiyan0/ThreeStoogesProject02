@@ -1,9 +1,15 @@
+var lat=document.getElementById("lat").innerHTML
+var lon=document.getElementById("lon").innerHTML
+var clat=document.getElementById("clat").innerHTML
+var clon=document.getElementById("clon").innerHTML
+var zoom=document.getElementById("zoom").innerHTML
+
+
 var mymap = L.map('mapid', {
-  center: [51.505, -0.09],
-  zoom: 6,
-  minZoom: 6,
-  maxZoom: 6,
-  zoomControl: false,
+  center: [lat, lon],
+  zoom: zoom,
+  minZoom: zoom,
+  maxZoom: zoom,
   dragging: false
 });
 
@@ -14,7 +20,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   accessToken: 'pk.eyJ1IjoiYmF2cmFoYW1pIiwiYSI6ImNrNWVrNThzZjAwbTUzanFvcmNmdmE0eGIifQ.FxbX7od1AfbBYC_dPK0a-A'
 }).addTo(mymap);
 
-var pointer = L.marker([51.505,-0.09]);
+var pointer = L.marker([clat, clon]);
 pointer.bindPopup("You can find it here.")
 var onmap = false;
 

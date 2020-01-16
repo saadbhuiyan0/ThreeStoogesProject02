@@ -66,9 +66,9 @@
                 <img src={{"https://www.metaweather.com/static/img/weather/png/" + weather[n]["weather_state_abbr"] + ".png"}} alt="{{weather[n]["weather_state_abbr"]}}" style="max-width:300px;max-height300px;">
                 Meteorologists say weather is going to look like this on {{weather[n]["applicable_date"]}} in the capital city {{capital}}. <br>
                 And  you should be able to see about {{weather[n]["visibility"]}} miles out. <br>
-                The temperature is probably going to be less than {{weather[n]["max_temp"]}} degrees C
+                The temperature is probably going to be less than {{weather[n]["max_temp"]}}&#176;C
                 but more importantly air pressure is going to be {{weather[n]["air_pressure"]}} mbar and humidity {{weather[n]["humidity"]}}%. <br>
-                Expect winds facing {{weather[n]["wind_direction"]}} degrees at {{weather[n]["wind_speed"]}} miles per hour. <br><br>
+                Expect winds heading {{weather[n]["wind_direction"]}}&#176; at {{weather[n]["wind_speed"]}} miles per hour. <br><br>
                 But hey, they're only {{weather[n]["predictability"]}}% sure, so who knows!
                 <br>
               </div>

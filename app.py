@@ -42,13 +42,12 @@ with open("api_key.txt", "r+") as api_key:
         locationiq_api_key = api_key.readline()
 
 
-db.init(locationiq_api_key)
+# db.init(locationiq_api_key)
 
-
-# try:
-#     db.init()
-# except:
-#     print("database has already been initialized and populated")
+try:
+    db.init()
+except:
+    print("database has already been initialized and populated")
 
 
 #=====DECORATOR=FUNCTIONS===================================================

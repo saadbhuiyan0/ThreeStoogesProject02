@@ -169,3 +169,8 @@ Final design doc.
 
 benjaminA -- 2020-01-16 09:20
 Updated README to correct installation instructions
+
+saadB -- 2020-01-16 09:45
+Check for api key when app.py is run.
+If it isn't in the txt file, allow user input through terminal.
+Required adapting db.py.

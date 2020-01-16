@@ -163,3 +163,6 @@ Implement MetaWeather API by searching up WOEID using latt and long and then loo
 Display weather in a carousel for the nation.
 Finishing touches on files: spacing, comments, etc.
 Fix bug where countries with spaces could not be favorite or unfavorited.
+
+saadB -- 2020-01-16 01:41
+Final design doc.

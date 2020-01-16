@@ -17,7 +17,7 @@ import time
 
 DB_FILE = 'stooges.db'
 
-locationiq_api_key = "af54e0b0e10a5c"
+locationiq_api_key = open("api_key.txt", "r").readline()
 
 
 # initializes the database tables if they don't exist
@@ -38,7 +38,7 @@ def init():
 def populate_database():
     print("populating database...")
     print("create admin: " + str(add_user("admin", "password")))
-    print("cache data from REST Countries API...")
+    print("cache data from REST Countries AND LocationIQ APIs...")
     fill_nations()
     print("data cached")
     print("add favorite nation United States of America to admin: " + str(add_favorite("admin", "United States of America")))

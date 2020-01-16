@@ -162,13 +162,18 @@ def browse():
     all_nations=db.return_nations()
     for nation in all_nations:
         nations_data.append(db.data(nation))
+    faves = db.get_favorites(session["username"]).split(",")
     return render_template("browse.html",
-                            nations=nations_data)
+                            nations=nations_data,
+                            favorites=faves)
 
 @app.route("/fav")
 @protected
 def refavorite():
-    db.add_favorite(session["username"],request.args["country"])
+    if request.args["submit"] == "Favorite this country":
+        db.add_favorite(session["username"],request.args["country"])
+    else:
+        db.remove_favorite(session["username"],request.args["country"])
     return redirect(url_for("home"))
 
 

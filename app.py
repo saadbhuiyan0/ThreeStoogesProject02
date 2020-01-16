@@ -127,13 +127,14 @@ def logout():
 @app.route("/home")
 @protected
 def home():
-    faves = db.get_favorites(session["username"])
-    if faves != "":
-        faves = faves.split(",")
-        faves.pop(len(faves)-1)
+    nations_data=list()
+    all_nations=db.return_nations()
+    for nation in all_nations:
+        nations_data.append(db.data(nation))
+    faves = db.get_favorites(session["username"]).split(",")
     return render_template("home.html",
-                            favorites = faves)
-
+                            nations=nations_data,
+                            favorites=faves)
 
 @app.route("/settings", methods=['GET','POST'])
 @protected

@@ -11,7 +11,7 @@
                     <p class="card-text">
                       {{nation['rating']}} <br>
                     </p>
-                    <a href={{"/country/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
+                    <a href={{"/nation/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
                     <div id="overlay">
                       <form action="/fav">
                       <input class="btn-primary" id="helpjs" type="text" name="country" value={{nation['nation']}}>

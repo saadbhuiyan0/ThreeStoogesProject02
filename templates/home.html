@@ -3,12 +3,30 @@
   <script src={{url_for('static', filename='home.js')}}></script>
 {% endblock %}
 {% block body %}
-  Favorites:
-  <ul class="list-group" id="favorites">
-    {% for i in favorites %}
-      <li class="list-group-item">
-        <a href={{"/nation/"+i.replace(" ","")}}>{{i}}</a>
-      </li>
-    {% endfor %}
-  </ul>
+  Explore some of your favorites:
+  <div class="row">
+  {% for nation in nations %}
+    {% if nation['nation'] in favorites %} 
+      <div class="col-md-3 mb-5">
+        <div class="card">
+           <img src={{nation['flag']}} class="card-img-top">
+           <div class="card-body">
+             <h3 class="card-title">{{nation['nation']}}</h3>
+             <p class="card-text">
+               {{nation['rating']}} <br>
+            </p>
+            <a href={{"/nation/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
+            <div id="overlay">
+              <form action="/fav">
+                <input class="btn-primary" id="helpjs" type="text" name="country" value={{nation['nation']}}>
+                <input class="btn-primary" type="submit" name="submit" value="Unfavorite this country">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+
 {% endblock %}

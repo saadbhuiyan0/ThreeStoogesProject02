@@ -3,6 +3,7 @@
   <script src={{url_for('static', filename='home.js')}}></script>
 {% endblock %}
 {% block body %}
+  
   Explore some of your favorites:
   <div class="row">
   {% for nation in nations %}
@@ -18,7 +19,7 @@
             <a href={{"/nation/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to country</a>
             <div id="overlay">
               <form action="/fav">
-                <input class="btn-primary" id="helpjs" type="text" name="country" value={{nation['nation']}}>
+                <input class="btn-primary" id="helpjs" type="text" name="nation" value={{nation['nation']}}>
                 <input class="btn-primary" type="submit" name="submit" value="Unfavorite this country">
               </form>
             </div>

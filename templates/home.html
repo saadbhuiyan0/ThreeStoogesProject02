@@ -1,26 +1,37 @@
 {% extends "base.html" %}
+
+{% block title %}
+  Home
+{% endblock %}
+
 {% block script %}
   <script src={{url_for('static', filename='home.js')}}></script>
 {% endblock %}
+
 {% block body %}
-  
-  Explore some of your favorites:
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to our site! We know you'll find it very useful in planning your trip.</h1>
+  </div>
+  <div class="container" style="text-align:center;">
+    <h3>Explore some of your favorite nations:</h3>
+  <div>
+  <br>
   <div class="row">
   {% for nation in nations %}
     {% if nation['nation'] in favorites %} 
       <div class="col-md-3 mb-5">
         <div class="card">
-           <img src={{nation['flag']}} class="card-img-top">
-           <div class="card-body">
-             <h3 class="card-title">{{nation['nation']}}</h3>
-             <p class="card-text">
-               {{nation['rating']}} <br>
+          <img src={{nation['flag']}} class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">{{nation['nation']}}</h3>
+            <p class="card-text">
+              {{nation['rating']}} <br>
             </p>
             <a href={{"/nation/"+nation['nation'].replace(" ","")}} class="btn btn-primary stretched-link notshown">Go to nation</a>
             <div id="overlay">
               <form action="/fav">
                 <input class="btn-primary" id="helpjs" type="text" name="nation" value={{nation['nation']}}>
-                <input class="btn-primary" type="submit" name="submit" value="Unfavorite this nation">
+                <input class="btn-primary" type="submit" name="submit" value="Unfavorite this Nation">
               </form>
             </div>
           </div>

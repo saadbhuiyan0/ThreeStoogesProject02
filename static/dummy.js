@@ -13,12 +13,14 @@ var mymap = L.map('mapid', {
   dragging: false
 });
 
+
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   maxZoom: 18,
   id: 'mapbox/streets-v11',
   accessToken: 'pk.eyJ1IjoiYmF2cmFoYW1pIiwiYSI6ImNrNWVrNThzZjAwbTUzanFvcmNmdmE0eGIifQ.FxbX7od1AfbBYC_dPK0a-A'
 }).addTo(mymap);
+
 
 var pointer = L.marker([clat, clon]);
 var textOptions = [
@@ -32,6 +34,7 @@ var randomIndex = Math.floor(Math.random() * textOptions.length);
 pointer.bindPopup(textOptions[randomIndex])
 var onmap = false;
 
+
 var addpopup = function(e) {
   if (onmap == false) {
     pointer.addTo(mymap);
@@ -40,12 +43,14 @@ var addpopup = function(e) {
   pointer.openPopup();
 }
 
+
 var removepopup = function(e) {
   if (onmap == true) {
     pointer.remove();
     onmap = false;
   }
 }
+
 
 var lis = document.getElementsByClassName("addpointer");
 

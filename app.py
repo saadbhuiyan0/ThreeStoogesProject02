@@ -16,8 +16,10 @@ from urllib.request import urlopen
 from utl import db
 import json
 
+
 # create instance of class Flask
 app = Flask(__name__)
+
 
 # set up sessions with random secret key
 # app.secret_key = os.urandom(32)     # for deployment
@@ -25,6 +27,7 @@ app.secret_key = "Stooges"            # for debugging
 
 
 # db.init() 
+
 
 try:
     db.init()
@@ -55,15 +58,6 @@ def root():
         return redirect(url_for("home"))
     # else redirect to login
     return redirect(url_for("login"))
-
-
-#HTML_TEMPLATE = Template("""
-#<h1>Hello ${some_place}!</h1>
-
-#<img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=${some_place}" alt="map of ${some_place}">
-
-#<img src="https://maps.googleapis.com/maps/api/streetview?size=700x300&location=${some_place}" alt="street view of ${some_place}">
-#""")
 
 
 # login page and authentication of login
@@ -129,12 +123,17 @@ def logout():
 def home():
     nations_data=list()
     all_nations=db.return_nations()
-    for nation in all_nations:
+    for nation in all_nations: # nation data to pass to template
         nations_data.append(db.data(nation))
-    faves = db.get_favorites(session["username"]).split(",")
+    faves = db.get_favorites(session["username"]) # grab favorites for user
+    if faves != None: # if there are favorites
+      faves = faves.split(",") # split into list
+    else:
+      faves = []
     return render_template("home.html",
                             nations=nations_data,
                             favorites=faves)
+
 
 @app.route("/settings", methods=['GET','POST'])
 @protected
@@ -161,9 +160,13 @@ def settings():
 def browse():
     nations_data=list()
     all_nations=db.return_nations()
-    for nation in all_nations:
+    for nation in all_nations: # nation data to pass to template
         nations_data.append(db.data(nation))
-    faves = db.get_favorites(session["username"]).split(",")
+    faves = db.get_favorites(session["username"]) # grab favorites for user
+    if faves != None: # if there are favorites
+      faves = faves.split(",") # split into list
+    else:
+      faves = []
     return render_template("browse.html",
                             nations=nations_data,
                             favorites=faves)
@@ -171,10 +174,11 @@ def browse():
 @app.route("/fav")
 @protected
 def refavorite():
-    if request.args["submit"] == "Favorite this nation":
-        db.add_favorite(session["username"],request.args["nation"])
-    else:
-        db.remove_favorite(session["username"],request.args["nation"])
+    print(request.args["nation"])
+    if request.args["submit"] == "Favorite this Nation": # if user clicks favorite on card
+        db.add_favorite(session["username"],request.args["nation"]) # add to favorite
+    else: # if user clicks unfavorite
+        db.remove_favorite(session["username"],request.args["nation"]) # remove from favorites
     return redirect(url_for("home"))
 
 
@@ -183,29 +187,35 @@ def refavorite():
 def nation(nation_code):
     nat = db.return_nations()
     facts = dict()
-    for i in nat:
+    for i in nat: # data for nation
         if i.replace(" ","") == nation_code:
             facts = db.data(i)
+    # get woeid for the capital from metaweather
     metaweather_woeid = "https://www.metaweather.com/api/location/search/?lattlong=" + facts["capitallat"] + "," + facts["capitallon"]
-    print(metaweather_woeid)
     woeid = json.loads(urlopen(metaweather_woeid).read())
     woeid = str(woeid[0]["woeid"])
-    print(woeid)
+    # call metaweather api with woeid
     metaweather_api_call = "https://www.metaweather.com/api/location/" + woeid
-    print(metaweather_api_call)
     metaweather_data = json.loads(urlopen(metaweather_api_call).read())
-    metaweather_data = metaweather_data["consolidated_weather"]
+    # weather data to pass to template
+    weather0 = metaweather_data["consolidated_weather"][0]
+    weather1 = metaweather_data["consolidated_weather"][1]
+    weather2 = metaweather_data["consolidated_weather"][2]
+    weather3 = metaweather_data["consolidated_weather"][3]
+    weather4 = metaweather_data["consolidated_weather"][4]
     return render_template("nation.html", 
                             nation=facts["nation"],capital=facts["capital"],flag=facts["flag"],
                             area=facts["area"],population=facts["population"],
                             lat=facts["nationlat"], lon=facts["nationlon"],
                             clat=facts["capitallat"], clon=facts["capitallon"],
                             zoom=facts["zoom"],
-                            weather=metaweather_data)
+                            weather0=weather0,weather1=weather1,weather2=weather2,weather3=weather3,weather4=weather4)
+
 
 #============================================================================
 
 
 if __name__ == "__main__":
     app.debug = True
+    # app.debug = False
     app.run()

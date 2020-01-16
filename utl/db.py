@@ -7,9 +7,8 @@
 # DATABASE INTERACTIONS
 
 
-# importing the sqlite3 module to interface with sqlite databases
 import sqlite3
-import csv       # facilitate CSV I/O
+import csv     
 from urllib.request import urlopen
 import json
 import time
@@ -54,22 +53,27 @@ def fill_nations():
         file = csv.DictReader(file) #read through file using DictReader
         for row in file: # goes through each row of the file
             print("updating " + row["nation"] + " in database from csv and api")
+            # api call for REST Countries data
             restcountries_api_call = "https://restcountries.eu/rest/v2/alpha/" + row["code"]
             restcountries_data = json.loads(urlopen(restcountries_api_call).read())
-            nation_name = row["nation"].replace(" ", "%20")
+            nation_name = row["nation"].replace(" ", "%20") # resolve issues with spaces
+            # api call for LocationIQ data for the nation
             locationiq_nation_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + nation_name + "&format=json&key=" + locationiq_api_key
             locationiq_nation_data = json.loads(urlopen(locationiq_nation_api_call).read())
-            time.sleep(1)
-            capital_name = restcountries_data["capital"].replace(" ", "%20")
-            if row["code"] == "US":
-                capital_name = "Washington"
+            time.sleep(1) # time sleep necessary in order for cache to complete, or else issues due to too many requests
+            capital_name = restcountries_data["capital"].replace(" ", "%20") # resolve issues with spaces
+            # handle edge case capital cities
+            if row["code"] == "US": 
+                capital_name = "Washington" # Washington, D.C. is problematic
             if row["code"] == "BR":
-                capital_name = "Brasilia"
+                capital_name = "Brasilia" # accent mark
             if row["code"] == "CO":
-                capital_name = "Bogota"
+                capital_name = "Bogota" # accent mark
+            # api call for LocationIQ data for the capital
             locationiq_capital_api_call = "https://us1.locationiq.com/v1/search.php?&q=" + capital_name + "&format=json&key=" + locationiq_api_key
             locationiq_capital_data = json.loads(urlopen(locationiq_capital_api_call).read())
-            time.sleep(1)
+            time.sleep(1) # time sleep necessary in order for cache to complete, or else issues due to too many requests
+            # store data in table
             c.execute("INSERT INTO nations(nation,code,rating,flag,capital,population,area,nationlat,nationlon,capitallat,capitallon,zoom) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);", 
                             (row["nation"],row["code"],row["rating"],restcountries_data["flag"],
                             restcountries_data["capital"],restcountries_data["population"],restcountries_data["area"],
@@ -183,6 +187,7 @@ def data(nation):
     c.execute("SELECT * FROM nations WHERE nation = ?;" , (nation,))
     data = dict()
     for row in c.fetchall(): # rows that are queried
+        # store all the data in a dictionary
         data["nation_id"] = row[0]
         data["nation"] = row[1]
         data["code"] = row[2]

@@ -14,6 +14,9 @@ We even give our own fun little rating.
 Before you even think about your next vacation, just browse the site for a few minutes! 
 You can thank us later.
 
+## [Video Demo](https://www.youtube.com/watch?v=Iwuy4hHO3YQ)
+Link to be updated by 08:00 EST Friday, January 17th, 2020.
+
 ## APIs Implemented
 - [REST Countries](https://docs.google.com/document/d/1aQRi7FIILs_x3RE5i65KHuuy49Rt05ZqERKqZjOGiJw/edit)
     - We used REST Countries to get data for each included nation.

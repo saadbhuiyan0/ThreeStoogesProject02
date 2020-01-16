@@ -3,8 +3,10 @@
   <script src={{url_for('static', filename='home.js')}}></script>
 {% endblock %}
 {% block body %}
-  
-  Explore some of your favorites:
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to our site! We know you'll find it very useful in planning your trip.</h1>
+  </div>
+  <h3>Explore some of your favorite nations:</h3>
   <div class="row">
   {% for nation in nations %}
     {% if nation['nation'] in favorites %} 

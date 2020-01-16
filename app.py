@@ -131,7 +131,11 @@ def home():
     all_nations=db.return_nations()
     for nation in all_nations:
         nations_data.append(db.data(nation))
-    faves = db.get_favorites(session["username"]).split(",")
+    faves = db.get_favorites(session["username"])
+    if faves != None:
+      faves = faves.split(",")
+    else:
+      faves = []
     return render_template("home.html",
                             nations=nations_data,
                             favorites=faves)
@@ -163,7 +167,11 @@ def browse():
     all_nations=db.return_nations()
     for nation in all_nations:
         nations_data.append(db.data(nation))
-    faves = db.get_favorites(session["username"]).split(",")
+    faves = db.get_favorites(session["username"])
+    if faves != None:
+      faves = faves.split(",")
+    else:
+      faves = []
     return render_template("browse.html",
                             nations=nations_data,
                             favorites=faves)

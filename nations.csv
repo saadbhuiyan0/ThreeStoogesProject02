@@ -1,63 +1,63 @@
-nation,code,rating,image,zoom
-United States of America,US,Not Afraid To Use Excessive Force,https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg,1
-China,CN,You Are Being Tracked,https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg,4
-Japan,JP,Everything Is A Robot,https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg,5
-Germany,DE,Don't Mention Hitler,https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg,5
-United Kingdom,GB,Cloudy And Boring America Wannabe,https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg,5
-France,FR,Baguettes Are Pointy,https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg,5
-India,IN,Don't Bring Up Pakistan,https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg,4
-Italy,IT,No New York Slices But Mario,https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg,5
-Brazil,BR,Alexa Play Vamos A La Playa,https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg,4
-Canada,CA,Death By Kindness,https://upload.wikimedia.org/wikipedia/en/c/cf/Flag_of_Canada.svg,3
-Russia,RU,Water Is Replaced By Alcohol,https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg,3
-South Korea,KR,Depends How Far North,https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg,7
-Australia,AU,Snakes Spiders And Fires,https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg,4
-Spain,ES,Food And Siestas,https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg,6
-Mexico,MX,No Taco Bell But Nice,https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg,4
-Indonesia,ID,Islands Are Healthy In Moderation,https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg,5
-Netherlands,NL,Not For Canal-phobics,https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg,7
-Saudi Arabia,SA,Flammable Oil And Money Everywhere,https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg,5
-Turkey,TR,Crazy Kebab Lovers,https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg,5
-Switzerland,CH,Too Much Chocolate,https://upload.wikimedia.org/wikipedia/commons/0/08/Flag_of_Switzerland_%28Pantone%29.svg,7
-Poland,PL,Actually Owned by Germany,https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg,6
-Taiwan,TW,Boba Is A Choking Hazard,https://upload.wikimedia.org/wikipedia/commons/7/72/Flag_of_the_Republic_of_China.svg,7
-Sweden,SE,IKEA And Meatballs,https://upload.wikimedia.org/wikipedia/en/4/4c/Flag_of_Sweden.svg,4
-Belgium,BE,Beautiful Architecture I Guess,https://upload.wikimedia.org/wikipedia/commons/9/92/Flag_of_Belgium_%28civil%29.svg,7
-Argentina,AR,They Don't Play Nice,https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg,4
-Thailand,TH,Just A Big Elephant Petting Zoo,https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_Thailand.svg,6
-Austria,AT,Mountains And Nothing Else,https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg,6
-Iran,IR,Definitely Not A Good Idea Now,https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg,5
-Norway,NO,Vikings and Stinky Fish,https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg,4
-United Arab Emirates,AE,Please Buy Our Website,https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg,7
-Nigeria,NG,Mosquitoes Are The Spawn Of Satan,https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg,6
-Ireland,IE,Land Of Potato Lovers,https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg,6
-Israel,IL,Nice People But Confusing History,https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg,6
-South Africa,ZA,Diamonds For Free At Costco,https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg,5
-Singapore,SG,Fancy High Tech Buildings With Rich People,https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Singapore.svg,10
-Hong Kong,HK,Now Might Not Be The Best Time,https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg,10
-Malaysia,MY,Singapore's Father,https://upload.wikimedia.org/wikipedia/commons/6/66/Flag_of_Malaysia.svg,5
-Denmark,DK,Everything Built In LEGOs,https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg,6
-Philippines,PH,Nice When There Are No Volcanic Tsunamis,https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_the_Philippines.svg,5
-Colombia,CO,The Other Type Of Businessmen,https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg,5
-Pakistan,PK,Not A Fan Of India,https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg,5
-Chile,CL,Long Country With Protestors,https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg,3
-Bangladesh,BD,Probably Underwater In A Week,https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg,6
-Finland,FI,Cold But Finnish,https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_Finland.svg,4
-Egypt,EG,Hot Sand Everywhere,https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg,5
-Czech Republic,CZ,Beer and... Beer,https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg,7
-Vietnam,VN,Watch Out For Talking Trees,https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg,5
-Romania,RO,Yes Vampires Exist,https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg,6
-Portugal,PT,Basically Spain,https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg,6
-Iraq,IQ,US V Iran Battlefront,https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg,5
-Peru,PE,Old Mountain Ruins And Llamas,https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg,4
-Greece,GR,May Lose Money To Help Economy,https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg,6
-New Zealand,NZ,Kiwis Are Cool,https://upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg,5
-Qatar,QA,Everything Is 5x More Expensive,https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg,8
-Algeria,DZ,Big Morocco Less Tourists,https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Algeria.svg,4
-Kazakhstan,KZ,The Stan That Starts With K,https://upload.wikimedia.org/wikipedia/commons/d/d3/Flag_of_Kazakhstan.svg,4
-Hungary,HU,No I Just Ate (Sorry),https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg,7
-Kuwait,KW,Rich Business Men,https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Kuwait.svg,8
-Ukraine,UA,Nuclear Wasteland,https://upload.wikimedia.org/wikipedia/commons/4/49/Flag_of_Ukraine.svg,5
-Morocco,MA,Desert But Nice Desert,https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg,5
-Ecuador,EC,Too Close To The Sun,https://upload.wikimedia.org/wikipedia/commons/e/e8/Flag_of_Ecuador.svg,6
-Slovak Republic,SK,Honestly Just A Russian Satellite,https://upload.wikimedia.org/wikipedia/commons/e/e6/Flag_of_Slovakia.svg,7
+nation,code,rating,zoom
+United States of America,US,Supersized Country With Excessive Force,1
+China,CN,You Are Always Being Tracked,4
+Japan,JP,Everything Is A Robot,5
+Germany,DE,Don't Mention Hitler,5
+United Kingdom,GB,Cloudy And Boring America Wannabe,5
+France,FR,Baguettes Are Pointy Safety Hazards,5
+India,IN,Don't Bring Up Pakistan,4
+Italy,IT,No New York Slices But Yes Mario,5
+Brazil,BR,Alexa Play Vamos A La Playa,4
+Canada,CA,Death By Kindness Or Maple Syrup,3
+Russia,RU,No Water Just Alcohol Comrade,3
+South Korea,KR,Depends How Far North,7
+Australia,AU,Snakes Spiders And Fires,4
+Spain,ES,Food And Siestas,6
+Mexico,MX,No Taco Bells But Still Fun,4
+Indonesia,ID,Islands Are Healthy In Moderation,5
+Netherlands,NL,Not For Canal-phobics,7
+Saudi Arabia,SA,Burn Money Like It's Oil,5
+Turkey,TR,Crazy Kebab Lovers,5
+Switzerland,CH,Too Much Chocolate And Peace,7
+Poland,PL,Actually Owned By Germany,6
+Taiwan,TW,Boba Is A Choking Hazard,7
+Sweden,SE,IKEA And Meatballs,4
+Belgium,BE,Architecture... I Guess,7
+Argentina,AR,They Don't Play Nice,4
+Thailand,TH,Just A Big Elephant Petting Zoo,6
+Austria,AT,Mountains And Nothing Else,6
+Iran,IR,Definitely Not A Good Idea Now,5
+Norway,NO,Vikings and Stinky Fish,4
+United Arab Emirates,AE,Please Buy Our Website,7
+Nigeria,NG,Mosquitoes Are The Spawn Of Satan,6
+Ireland,IE,Land Of Potato Lovers,6
+Israel,IL,Nice People But Confusing History,6
+South Africa,ZA,Diamonds For Free At Costco,5
+Singapore,SG,Fancy Tall Buildings With Rich People,10
+Hong Kong,HK,Now Might Not Be The Best Time,10
+Malaysia,MY,Singapore's Father,5
+Denmark,DK,Everything Built In LEGOs,6
+Philippines,PH,Nice When There Are No Volcanic Tsunamis,5
+Colombia,CO,The Other Type Of Businessmen,5
+Pakistan,PK,Not A Fan Of Anything India,5
+Chile,CL,Long Country With Protestors,3
+Bangladesh,BD,Probably Underwater By Next Week,6
+Finland,FI,Cold But Finnish,4
+Egypt,EG,Hot Sand And Triangles,5
+Czech Republic,CZ,Beer and... Beer,7
+Vietnam,VN,Watch Out For Talking Trees,5
+Romania,RO,Yes Vampires Exist,6
+Portugal,PT,Basically Spain,6
+Iraq,IQ,US V Iran Battlefront,5
+Peru,PE,Old Mountain Ruins And Llamas,4
+Greece,GR,May Lose Money To Help Economy,6
+New Zealand,NZ,Kiwis Are Cool,5
+Qatar,QA,Money Is No Object Here,8
+Algeria,DZ,Big Morocco Less Tourists,4
+Kazakhstan,KZ,The Stan That Starts With K,4
+Hungary,HU,No I Just Ate... Sorry,7
+Kuwait,KW,Oil Dealers And Expensive Hotels,8
+Ukraine,UA,Nuclear Wasteland,5
+Morocco,MA,Desert But Nice Desert,5
+Ecuador,EC,Too Close To The Sun,6
+Slovak Republic,SK,Honestly Just A Russian Satellite,7

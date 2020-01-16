@@ -128,9 +128,13 @@ Call APIs to get lat/lon for nations and nation capitals.
 Make amendments to nations.csv.
 Create method that returns the api call necessary to generate a map of the nation with marker on capital.
 
-saadB -- 2020-01-15 19:04
+saadB -- 2020-01-15 19:46
 Update map size.
 Update zoom levels for each nation.
 Fix bug where home won't render due to no favorites.
 Move API key to text file. 
 Update instructions and information in README.
+
+saadB -- 2020-01-15 21:10
+Remove Wikipedia API due to Wikimedia politics.
+Remove images from csv, grab from API instead.

@@ -166,17 +166,19 @@ def browse():
                             nations=nations_data)
 
 
-@app.route("/country")
+
+@app.route("/country/<country_code>")
 @protected
-def testmap():
-    return render_template("country.html")
-
-
-@app.route("/nation")
-@protected
-def nation(nation):
-    return(HTML_TEMPLATE.substitute(some_place=nation))
-
+def countries(country_code):
+    nat = db.return_nations()
+    facts = dict()
+    for i in nat:
+        if i.replace(" ","") == country_code:
+            facts = db.data(i)
+    return render_template("country.html", 
+                            lat=facts["nationlat"], lon=facts["nationlon"],
+                            clat=facts["capitallat"], clon=facts["capitallon"],
+                            zoom=facts["zoom"])
 
 #============================================================================
 

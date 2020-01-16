@@ -167,15 +167,17 @@ def browse():
 
 
 
-@app.route("/country/<country_code>")
+@app.route("/nation/<nation_code>")
 @protected
-def countries(country_code):
+def nation(nation_code):
     nat = db.return_nations()
     facts = dict()
     for i in nat:
-        if i.replace(" ","") == country_code:
+        if i.replace(" ","") == nation_code:
             facts = db.data(i)
-    return render_template("country.html", 
+    return render_template("nation.html", 
+                            nation=facts["nation"],capital=facts["capital"],flag=facts["flag"],
+                            area=facts["area"],population=facts["population"],
                             lat=facts["nationlat"], lon=facts["nationlon"],
                             clat=facts["capitallat"], clon=facts["capitallon"],
                             zoom=facts["zoom"])

@@ -45,7 +45,7 @@ with open("api_key.txt", "r+") as api_key:
 # db.init(locationiq_api_key)
 
 try:
-    db.init()
+    db.init(locationiq_api_key)
 except:
     print("database has already been initialized and populated")
 
@@ -212,19 +212,13 @@ def nation(nation_code):
     # call metaweather api with woeid
     metaweather_api_call = "https://www.metaweather.com/api/location/" + woeid
     metaweather_data = json.loads(urlopen(metaweather_api_call).read())
-    # weather data to pass to template
-    weather0 = metaweather_data["consolidated_weather"][0]
-    weather1 = metaweather_data["consolidated_weather"][1]
-    weather2 = metaweather_data["consolidated_weather"][2]
-    weather3 = metaweather_data["consolidated_weather"][3]
-    weather4 = metaweather_data["consolidated_weather"][4]
     return render_template("nation.html",
                             nation=facts["nation"],capital=facts["capital"],flag=facts["flag"],
                             area=facts["area"],population=facts["population"],
                             lat=facts["nationlat"], lon=facts["nationlon"],
                             clat=facts["capitallat"], clon=facts["capitallon"],
                             zoom=facts["zoom"],
-                            weather0=weather0,weather1=weather1,weather2=weather2,weather3=weather3,weather4=weather4)
+                            weather=metaweather_data["consolidated_weather"])
 
 
 #============================================================================

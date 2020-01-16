@@ -36,8 +36,8 @@ Link to be updated by 08:00 EST Friday, January 17th, 2020.
     - After you register, it will take you to your dashboard where you will see a token field - that is your API key.
     - Save the API key in a txt file named `api_key.txt` in the ThreeStoogesProject02 directory.
 - In your terminal - within the ThreeStoogesProject02 directory - run: `virtualenv venv`
-- Then: `source venv/bin/activate`
-- Then: `pip install -r doc/requirements.txt`
+- Then: `python3 -m venv hero
+- Then: `. hero/bin/activate
 - Then: `python3 app.py` to run the app.
 - The first time you run the app, the database will take a substantial amount of time (over 2 minutes) to populate with the data from the APIs. This is due to the 2 API calls per second limit imposed by LocationIQ's free plan. After the database is populated once, the launch time should reduce drastically (<5 seconds).
 - Finally you can head over to your local server and start making wack travel plans.

@@ -14,6 +14,9 @@ We even give our own fun little rating.
 Before you even think about your next vacation, just browse the site for a few minutes! 
 You can thank us later.
 
+## [Video Demo](https://www.youtube.com/watch?v=Iwuy4hHO3YQ)
+Link to be updated by 08:00 EST Friday, January 17th, 2020.
+
 ## APIs Implemented
 - [REST Countries](https://docs.google.com/document/d/1aQRi7FIILs_x3RE5i65KHuuy49Rt05ZqERKqZjOGiJw/edit)
     - We used REST Countries to get data for each included nation.
@@ -24,7 +27,7 @@ You can thank us later.
     - We also used the API to generate maps with markers using the data we stored.
 - [MetaWeather](https://docs.google.com/document/d/18uyXB5XPFQoGFJpoa2yQvRPhevc3HaBU4kO-OYN-ieY/edit#heading=h.3zf63kd5qt0p)
     - MetaWeather provides us with updated weather information for each nation's page.
-    - We use it to get weather for the capital city of the nation with it's Where On Earth ID.
+    - We use it to get weather for the capital city of the nation by latitude and longitude search.
 
 ## Launch Codes
 - Clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02).

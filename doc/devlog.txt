@@ -132,3 +132,5 @@ saadB -- 2020-01-15 19:04
 Update map size.
 Update zoom levels for each nation.
 Fix bug where home won't render due to no favorites.
+Move API key to text file. 
+Update instructions and information in README.

@@ -166,3 +166,6 @@ Fix bug where countries with spaces could not be favorite or unfavorited.
 
 saadB -- 2020-01-16 01:41
 Final design doc.
+
+benjaminA -- 2020-01-16 09:20
+Updated README to correct installation instructions

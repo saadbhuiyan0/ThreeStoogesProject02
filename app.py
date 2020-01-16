@@ -171,10 +171,10 @@ def browse():
 @app.route("/fav")
 @protected
 def refavorite():
-    if request.args["submit"] == "Favorite this country":
-        db.add_favorite(session["username"],request.args["country"])
+    if request.args["submit"] == "Favorite this nation":
+        db.add_favorite(session["username"],request.args["nation"])
     else:
-        db.remove_favorite(session["username"],request.args["country"])
+        db.remove_favorite(session["username"],request.args["nation"])
     return redirect(url_for("home"))
 
 

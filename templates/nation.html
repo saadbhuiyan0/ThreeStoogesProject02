@@ -12,19 +12,33 @@
   <script src="https://tiles.locationiq.com/js/leaflet-unwired.js"></script>
 {% endblock %}
 {% block body %}
-  <div class="jumbotron text-center" style="background-image:url({{flag}}); background-size: cover; background-position: center top;">
+  <div class="jumbotron text-center" style="background-image:url({{flag}}); background-size: cover; background-position: center top; border:2px black solid;">
     <div class="container" style="margin:auto;">
-      <h3 class="display-3" style="background-color: white;">{{nation}}</h3>
+      <h3 class="display-3" style="background-color:white; border:2px black solid;">{{nation}}</h3>
+      <br>
       <div id="outerdiv"><div id="mapid" style="display:inline-block;"></div></div>
+      <br>
       <button type="button" class="btn btn-outline-primary addpointer" style="background-color: white;">Find a restaurant for me!</button>
       <button type="button" class="btn btn-outline-primary addpointer" style="background-color: white;">I need a place to stay!</button>
       <button type="button" class="btn btn-outline-primary addpointer" style="background-color: white;">Where can I find art and history?</button>
-      <br>
       <button type="button" class="btn btn-secondary" id="removepointer">Clear</button>
       <br><br><br><br>
-      <div class="container" style="background-color: white;">
-        <h4 class="display-4">Fun Facts</h3>
+      <div class="container" style="background-color:white; border:2px black solid;">
+        <br>
+        <h4 class="display-4">Wacky Facts</h3>
+        <br>
+        The capital city of {{nation}} is {{capital}}! Wow fascinating!
         <br><br>
+        Did you know that {{nation}} is bigger than Stuyvesant?! 
+        <br>
+        It is {{ area * 16 * 1000000 }} sheets of paper in land area! That's a lot of trees! #TeamTrees
+        <br><br>
+        {{nation}} has about {{population / 3500}} times more people than Stuyvesant, with a population of {{population}} people!
+        <br>
+        That's like... a lot of people.
+        <br>
+        <br>
+        <br>
       </div>
     </div>
   </div>

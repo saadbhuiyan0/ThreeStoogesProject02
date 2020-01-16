@@ -16,6 +16,7 @@ import time
 
 DB_FILE = 'stooges.db'
 
+
 locationiq_api_key = open("api_key.txt", "r").readline()
 
 

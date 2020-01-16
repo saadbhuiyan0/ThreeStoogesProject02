@@ -21,7 +21,15 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 var pointer = L.marker([clat, clon]);
-pointer.bindPopup("You can find it here.")
+var textOptions = [
+  "There's a great place here!",
+  "I think you'll enjoy this location.",
+  "Have you considered this option?",
+  "This is one of my favorites!",
+  "Here you go, enjoy!"
+]
+var randomIndex = Math.floor(Math.random() * textOptions.length); 
+pointer.bindPopup(textOptions[randomIndex])
 var onmap = false;
 
 var addpopup = function(e) {

@@ -24,7 +24,7 @@ You can thank us later.
     - We also used the API to generate maps with markers using the data we stored.
 - [MetaWeather](https://docs.google.com/document/d/18uyXB5XPFQoGFJpoa2yQvRPhevc3HaBU4kO-OYN-ieY/edit#heading=h.3zf63kd5qt0p)
     - MetaWeather provides us with updated weather information for each nation's page.
-    - We use it to get weather for the capital city of the nation with it's Where On Earth ID.
+    - We use it to get weather for the capital city of the nation by latitude and longitude search.
 
 ## Launch Codes
 - Clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02).

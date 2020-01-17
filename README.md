@@ -30,12 +30,14 @@ Link to be updated by 08:00 EST Friday, January 17th, 2020.
     - We use it to get weather for the capital city of the nation by latitude and longitude search.
 
 ## Launch Codes
-- Clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02).
+- First you will want to open Git Bash.
+- Go to the directory where you would like to clone the project.
+- Then clone the project from [here](https://github.com/saadbhuiyan0/ThreeStoogesProject02).
 - Next you will need to generate a key for the [LocationIQ API](doc/411_locationiq.pdf).
     - Start by signing up on their [website](https://locationiq.com/register).
     - After you register, it will take you to your dashboard where you will see a token field - that is your API key.
 - In your terminal - within the ThreeStoogesProject02 directory - run: `python3 -m venv hero`
-- Then: `. hero/bin/activate`
+- Then: `. hero/Scripts/activate`
 - Then: `pip3 install -r doc/requirements.txt`
 - Then: `python3 app.py` to run the app.
 - If it is your first time running the app, api_key.txt will be empty so the terminal will prompt you to input the API key you generated for LocationIQ.
